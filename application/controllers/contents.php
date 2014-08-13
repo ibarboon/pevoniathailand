@@ -1,14 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Contents extends CI_Controller
-{
-	public function __construct()
-	{
+class Contents extends CI_Controller {
+	
+	public function __construct() {
 		parent::__construct();
 	}
 	
-	public function index()
-	{
+	public function index() {
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
 		
