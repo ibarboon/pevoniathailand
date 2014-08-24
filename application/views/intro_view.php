@@ -7,8 +7,9 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	    <title>Full Slider - Start Bootstrap Template</title>
-	    <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-	     <link href="<?php echo base_url('assets/css/full-slider.css') ?>" rel="stylesheet">
+	    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+	    <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+     	<link rel="stylesheet" href="<?php echo base_url('assets/css/full-slider.css') ?>">
 	    <!--[if lt IE 9]>
 	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -24,15 +25,29 @@
 	            <div class="item active">
 	                <div class="fill" style="background-image:url('<?php echo base_url('assets/images/test-intro-page.jpg'); ?>');"></div>
 	                <div class="carousel-caption">
-	                    <h2>Caption 1</h2>
-	                    <p>Caption 1</p>
+	                    <p>
+	                    		<a class="btn btn-default btn-xs" href="#" role="button"><i class="fa fa-facebook"></i> FACEBOOK</a>
+	                    		<a class="btn btn-default btn-xs" href="#" role="button"><i class="fa fa-instagram"></i> INSTAGRAM</a>
+	                    		<a class="btn btn-default btn-xs" href="#" role="button"><i class="fa fa-twitter"></i> TWITTER</a>
+	                    </p>
+	                    <p>
+	                    		<a class="btn btn-primary btn-lg" href="#" role="button">เข้าเว็บไซต์</a>
+	                    		<a class="btn btn-primary btn-lg" href="#" role="button">Enter Website</a>
+	                    </p>
 	                </div>
 	            </div>
 	            <div class="item">
 	                <div class="fill" style="background-image:url('<?php echo base_url('assets/images/test-intro-page.jpg'); ?>');"></div>
                 	   <div class="carousel-caption">
-	                    <h2>Caption 2</h2>
-	                    <p>Caption 2</p>
+	                    <p>
+	                    		<a class="btn btn-default btn-xs" href="#" role="button"><i class="fa fa-facebook"></i> FACEBOOK</a>
+	                    		<a class="btn btn-default btn-xs" href="#" role="button"><i class="fa fa-instagram"></i> INSTAGRAM</a>
+	                    		<a class="btn btn-default btn-xs" href="#" role="button"><i class="fa fa-twitter"></i> TWITTER</a>
+	                    </p>
+	                    <p>
+	                    		<a class="btn btn-primary btn-lg" href="#" role="button">เข้าเว็บไซต์</a>
+	                    		<a class="btn btn-primary btn-lg" href="#" role="button">Enter Website</a>
+	                    </p>
 	                </div>
 	            </div>
 	        </div>
