@@ -19,11 +19,7 @@
 					</ul>
 				</div>
 				<div class="four columns">
-					<h4>Photo Stream</h4>
-					<div class="flickr-widget">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=72179079@N00"></script>
-						<div class="clearfix"></div>
-					</div>
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpevoniathailand&amp;width&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>
 				</div>
 				<div class="four columns">
 					<h4>Social Network</h4>
