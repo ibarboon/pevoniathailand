@@ -7,14 +7,17 @@ class Intro extends CI_Controller {
 	}
 	
 	public function index() {
-// 		echo "<code>intro / index</code>";
-// 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
-// 		$arg['menu_list'] = $this->utility_model->get_menu_list();
-// 		$arg['contact_list'] = $this->utility_model->get_option_by_type('CONTACT_EN');
-		
-		$this->load->view('intro_view');
-// 		$this->load->view('http_404_view');
-// 		$this->load->view('footer_view', $arg);
+		$args['html_meta'] = $this->utility_model->get_option_by_type('html_meta', 'customize');
+		$args['carousel_list'] = $this->utility_model->get_option_by_type('carousel_intro', 'nomal');
+		$args['social_network_list'] = $this->utility_model->get_option_by_type('social_network', 'nomal');
+// 		$this->p_r($args);
+		$this->load->view('intro_view', $args);
+	}
+	
+	public function p_r($params) {
+		echo '<pre>';
+		print_r($params);
+		echo '<pre>';
 	}
 	
 }

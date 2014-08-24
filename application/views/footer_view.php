@@ -30,7 +30,7 @@
 					<ul class="social-network-icons">
 						<li><a href="https://www.facebook.com/pevoniathailand"><i class="fa fa-facebook fa-3x"></i></a></li>
 						<li><a href="http://instagram.com/pevoniathailand/"><i class="fa fa-instagram fa-3x"></i></a></li>
-						<li><a href=" https://twitter.com/PevoniaThailand"><i class="fa fa-twitter fa-3x"></i></a></li>
+						<li><a href="https://twitter.com/PevoniaThailand"><i class="fa fa-twitter fa-3x"></i></a></li>
 					</ul>
 				</div>
 			</div>

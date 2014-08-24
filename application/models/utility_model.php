@@ -6,17 +6,21 @@ class Utility_Model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function get_option_by_type($arg)
-	{
+	public function get_option_by_type($arg, $format) {
 		$sql = "select row_id option_id, option_key, option_value ";
-		$sql .= "from tbl_options ";
-		$sql .= "where option_type = ? ";
+		$sql .= "from pt_options ";
+		$sql .= "where lower(option_type) = lower(?) ";
 		$sql .= "order by option_sequence asc;";
-	
 		$query = $this->db->query($sql, $arg);
-		$result_array = $query->result_array();
-
-		return $result_array;
+		if ($format === 'customize') {
+			$result_array = array();
+			foreach ($query->result_array() as $row) {
+				$result_array[$row['option_key']] = $row['option_value'];
+			}
+			return $result_array;
+		} else {
+			return $query->result_array();
+		}
 	}
 	
 	public function get_menu_list() {
