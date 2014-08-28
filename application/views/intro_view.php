@@ -11,8 +11,8 @@
 	    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
 	    <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
      	<link rel="stylesheet" href="<?php echo base_url('assets/css/full-slider.css') ?>">
-     	<link rel="stylesheet" href="<?php echo base_url('/assets/css/style.css'); ?>">
-		<link rel="stylesheet" href="<?php echo base_url('/assets/css/colors/celadon.css'); ?>" id="colors">
+     	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/colors/celadon.css'); ?>" id="colors">
 	    <!--[if lt IE 9]>
 	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
