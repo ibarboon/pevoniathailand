@@ -18,9 +18,7 @@
 						?>
 					</ul>
 				</div>
-				<div class="four columns">
-					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpevoniathailand&amp;width&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>
-				</div>
+				<div class="four columns"></div>
 				<div class="four columns">
 					<h4>Social Network</h4>
 					<ul class="social-network-icons">
@@ -28,6 +26,7 @@
 						<li><a href="http://instagram.com/pevoniathailand/"><i class="fa fa-instagram fa-3x"></i></a></li>
 						<li><a href="https://twitter.com/PevoniaThailand"><i class="fa fa-twitter fa-3x"></i></a></li>
 					</ul>
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpevoniathailand&amp;width&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>
 				</div>
 			</div>
 		</footer>

@@ -11,6 +11,8 @@
 	    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
 	    <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
      	<link rel="stylesheet" href="<?php echo base_url('assets/css/full-slider.css') ?>">
+     	<link rel="stylesheet" href="<?php echo base_url('/assets/css/style.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('/assets/css/colors/celadon.css'); ?>" id="colors">
 	    <!--[if lt IE 9]>
 	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -41,12 +43,12 @@
 									$sn = explode('|', $social_network['option_value']);
 								}
 							?>
-							<a class="btn btn-default btn-xs" href="<?php echo $sn[1]; ?>" role="button"><i class="<?php echo $sn[0]; ?>"></i> <?php echo strtoupper($social_network['option_key']); ?></a>
+							<a class="button light" href="<?php echo $sn[1]; ?>" role="button"><i class="<?php echo $sn[0]; ?>"></i> <?php echo strtoupper($social_network['option_key']); ?></a>
 							<?php } ?>
 						</p>
 						<p>
-							<a class="btn btn-primary btn-lg" href="<?php echo site_url('home')?>" role="button">เข้าเว็บไซต์</a>
-							<a class="btn btn-primary btn-lg" href="<?php echo site_url('home')?>" role="button">Enter Website</a>
+							<a class="button color" href="<?php echo site_url('home')?>" role="button">เข้าเว็บไซต์</a>
+							<a class="button color" href="<?php echo site_url('home')?>" role="button">Enter Website</a>
 						</p>
 					</div>
 				</div>
