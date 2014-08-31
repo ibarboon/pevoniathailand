@@ -9,7 +9,7 @@ class Products extends CI_Controller {
 	public function index() {
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
-		$arg['contact_list'] = $this->utility_model->get_option_by_type('CONTACT_EN');
+		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
 		$arg['product_class'] = $this->products_model->select_product_class($arg['current_view']);
 		$arg['product_type_list'] = $this->products_model->select_product_type_list_by_class($arg['product_class']['product_class_id']);
 // 		echo '<pre>';

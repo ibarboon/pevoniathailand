@@ -5,13 +5,12 @@ class Home extends CI_Controller {
 		parent::__construct();
 	}
 	
-	public function index()
-	{
+	public function index() {
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
-		$arg['contact_list'] = $this->utility_model->get_option_by_type('CONTACT_EN');
+		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
 // 		echo '<pre>';
-// 		print_r($arg['menu_list']);
+// 		print_r($arg);
 // 		echo '</pre>';
 		$this->load->view('header_view', $arg);
 		$this->load->view('home_view');
@@ -22,7 +21,7 @@ class Home extends CI_Controller {
 	{
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
-		$arg['contact_list'] = $this->utility_model->get_option_by_type('CONTACT_EN');
+		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
 	
 		$this->load->view('header_view', $arg);
 		$this->load->view('why_pevonia_view');

@@ -24,33 +24,14 @@ class Utility_Model extends CI_Model {
 	}
 	
 	public function get_menu_list() {
-// 		$sql = "select option_key, option_value, b.product_type_alias_name, b.product_type_name ";
-// 		$sql .= "from tbl_options ";
-// 		$sql .= "left join tbl_product_type a ";
-// 		$sql .= "inner join tbl_product_type b ";
-// 		$sql .= "on a.row_id = b.parent_row_id ";
-// 		$sql .= "on option_key = a.product_type_alias_name ";
-// 		$sql .= "where option_type = 'MENU' ";
-// 		$sql .= "order by option_sequence, b.product_type_name;";
-
 		$sql = "select option_key, option_value ";
-		$sql .= "from tbl_options ";
-		$sql .= "where option_type = 'MENU' ";
+		$sql .= "from pt_options ";
+		$sql .= "where lower(option_type) = lower('menu') ";
 		$sql .= "order by option_sequence";
-		
 		$query = $this->db->query($sql);
-
-		foreach($query->result_array() as $key => $value):
-// 			if($value['product_type_alias_name'] === NULL) {
-				$menu_list[$value['option_key']] = $value['option_value'];
-// 			} else {
-// 				$menu_list[$value['option_key']]['display_value'] = $value['option_value'];
-// 				$menu_list[$value['option_key']]['sub_menu'][] = array(
-// 					'href' => $value['product_type_alias_name'], 
-// 					'display_value' => $value['product_type_name']
-// 				);
-// 			}
-		endforeach;
+		foreach($query->result_array() as $key => $value) {
+			$menu_list[$value['option_key']] = $value['option_value'];
+		}
 		return $menu_list;
 	}
 }
