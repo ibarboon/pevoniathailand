@@ -9,31 +9,24 @@ class Home extends CI_Controller {
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
 		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
-// 		echo '<pre>';
-// 		print_r($arg);
-// 		echo '</pre>';
 		$this->load->view('header_view', $arg);
 		$this->load->view('home_view');
 		$this->load->view('footer_view', $arg);
 	}
 	
-	public function why_pevonia()
-	{
+	public function why_pevonia() {
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
 		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
-	
 		$this->load->view('header_view', $arg);
 		$this->load->view('why_pevonia_view');
 		$this->load->view('footer_view', $arg);
 	}
 	
-	public function _http_404()
-	{
+	public function _http_404() {
 		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list();
-		$arg['contact_list'] = $this->utility_model->get_option_by_type('CONTACT_EN');
-		
+		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
 		$this->load->view('header_view', $arg);
 		$this->load->view('http_404_view');
 		$this->load->view('footer_view', $arg);
