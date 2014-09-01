@@ -35,15 +35,14 @@
 				<div class="eight columns">
 					<div class="copyright">Copyright &copy; 2012 <a href="javascript:void(0);">Pevonia (Thailand) Co., Ltd.</a>. All Rights Reserved.</div>
 				</div>
-				<!--div class="eight columns">
+				<div class="eight columns">
 					<nav id="sub-menu">
-					<ul>
-					<li><a href="#">FAQ's</a></li>
-					<li><a href="#">Sitemap</a></li>
-					<li><a href="#">Contact</a></li>
-					</ul>
+						<ul>
+							<li><a href="#">ENG</a></li>
+							<li><a href="#">THA</a></li>
+						</ul>
 					</nav>
-				</div-->
+				</div>
 			</div>
 		</footer>
 	</body>

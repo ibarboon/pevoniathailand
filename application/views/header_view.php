@@ -30,19 +30,53 @@
 	<body>
 		<div id="wrapper">
 			<div id="top-line"></div>
-			<div>
-				<div class="container">
-					<header id="header">
-						<div class="ten columns">
-							<div id="logo">
-								<h1><a href="<?php echo site_url('/'); ?>"><img src="<?php echo base_url('/assets/images/temp-logo.png'); ?>" alt="Pevonia Thailand" /></a></h1>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</header>
-					<div class="clearfix"></div>
-				</div>
+			<div class="container">
+
+	<!-- Header -->
+	<header id="header">
+
+		<!-- Logo -->
+		<div class="ten columns">
+			<div id="logo">
+				<h1><a href="<?php echo site_url('/'); ?>"><img src="<?php echo base_url('/assets/images/temp-logo.png'); ?>" alt="Pevonia Thailand" /></a></h1>
+<!-- 				<div id="tagline">Template Without Compromises!</div> -->
+				<div class="clearfix"></div>
 			</div>
+		</div>
+
+		<!-- Social / Contact -->
+		<div class="six columns">
+
+			<!-- Social Icons -->
+<!-- 			<ul class="social-icons"> -->
+<!-- 				<li class="twitter"><a href="#">Twitter</a></li> -->
+<!-- 				<li class="facebook"><a href="#">Facebook</a></li> -->
+<!-- 				<li class="dribbble"><a href="#">Dribbble</a></li> -->
+<!-- 				<li class="linkedin"><a href="#">LinkedIn</a></li> -->
+<!-- 				<li class="rss"><a href="#">RSS</a></li> -->
+<!-- 			</ul> -->
+			<br>
+
+			<div class="clearfix"></div>
+
+<!-- 			<div class="contact-details">Contact Phone: +48 880 440 110</div> -->
+
+<!-- 			<div class="clearfix"></div> -->
+
+			<!-- Search -->
+			<nav class="top-search">
+				<form method="get" action="404-page.html">
+					<button class="search-btn"></button>
+					<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
+				</form>
+			</nav>
+
+		</div>
+	</header>
+
+	<div class="clearfix"></div>
+
+</div>
 			<nav id="navigation" class="style-1">
 				<div class="left-corner"></div>
 				<div class="right-corner"></div>
