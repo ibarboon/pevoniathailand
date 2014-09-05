@@ -43,21 +43,17 @@
 				<div class="clearfix"></div>
 			</div>
 		</div>
-
-		<!-- Social / Contact -->
 		<div class="six columns">
+			<ul class="social-icons">
+				<li class="twitter"><a href="#">Twitter</a></li>
+				<li class="facebook"><a href="#">Facebook</a></li>
+				<li class="dribbble"><a href="#">Dribbble</a></li>
+				<li class="linkedin"><a href="#">LinkedIn</a></li>
+				<li class="rss"><a href="#">RSS</a></li>
+			</ul>
+<!-- 			<br> -->
 
-			<!-- Social Icons -->
-<!-- 			<ul class="social-icons"> -->
-<!-- 				<li class="twitter"><a href="#">Twitter</a></li> -->
-<!-- 				<li class="facebook"><a href="#">Facebook</a></li> -->
-<!-- 				<li class="dribbble"><a href="#">Dribbble</a></li> -->
-<!-- 				<li class="linkedin"><a href="#">LinkedIn</a></li> -->
-<!-- 				<li class="rss"><a href="#">RSS</a></li> -->
-<!-- 			</ul> -->
-			<br>
-
-			<div class="clearfix"></div>
+<!-- 			<div class="clearfix"></div> -->
 
 <!-- 			<div class="contact-details">Contact Phone: +48 880 440 110</div> -->
 

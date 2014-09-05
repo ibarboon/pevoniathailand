@@ -9,6 +9,7 @@ $route['pevonia-spas|pevonia-spas/(:any)|pevonia-spas/archives/(:any)'] = 'conte
 $route['activities|activities/(:any)|activities/archives/(:any)'] = 'contents';
 $route['q-and-a'] = 'qa';
 $route['customer-service'] = 'customer_service';
+$route['(en|th)/home'] = 'home';
 $route['default_controller'] = 'intro';
 $route['404_override'] = 'home/_http_404';
 

@@ -23,16 +23,25 @@ class Utility_Model extends CI_Model {
 		}
 	}
 	
-	public function get_menu_list() {
+	public function get_menu_list($arg) {
 		$sql = "select option_key, option_value ";
 		$sql .= "from pt_options ";
-		$sql .= "where lower(option_type) = lower('menu') ";
+		$sql .= "where lower(option_type) = lower(?) ";
 		$sql .= "order by option_sequence";
-		$query = $this->db->query($sql);
+		$query = $this->db->query($sql, $arg);
 		foreach($query->result_array() as $key => $value) {
 			$menu_list[$value['option_key']] = $value['option_value'];
 		}
 		return $menu_list;
+	}
+	
+	public function get_default_language($arg) {
+		if ($arg === FALSE) {
+			$default_language = $this->get_option_by_type('default_language', 'customize');
+			return $default_language['language'];
+		} else {
+			return $arg;
+		}
 	}
 }
 
