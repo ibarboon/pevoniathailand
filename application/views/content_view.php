@@ -32,7 +32,7 @@
 				</section>
 				<section class="post-content">
 					<header class="meta">
-						<h2><a href="<?php echo site_url(strtolower($breadcrumbs_list[2]).'/'.$content['content_alias_name']); ?>"><?php echo $content['content_header']; ?></a></h2>
+						<h2><?php echo $content['content_header']; ?></h2>
 						<span><i class="halflings user"></i>By <a href="javascript:void(0);"><?php echo $content['created_by']; ?></a></span>
 						<!--span><i class="halflings tag"></i><a href="#">Boating</a>, <a href="#">Recreation</a></span>
 						<span><i class="halflings comments"></i>With <a href="#">12 Comments</a></span-->
@@ -48,10 +48,9 @@
 					<h4>Archives</h4>
 					<ul class="categories">
 						<?php
-							foreach($archives_list as $key => $value):
-								echo '<li><a href="'.site_url(strtolower($breadcrumbs_list[2]).'/archives/'.strtolower(str_replace(' ', '-', $value['archives']))).'">'.$value['archives'].'</a></li>';
-								//echo '<li><a href="javascript:void(0);">'.$value['archives'].'</a></li>';
-							endforeach;
+							foreach($archives_list as $key => $value) {
+								echo '<li><a href="'.site_url($default_language.'/'.strtolower($breadcrumbs_list[2]).'/archives/'.strtolower(str_replace(' ', '-', $value['archives']))).'">'.$value['archives'].'</a></li>';
+							}
 						?>
 					</ul>
 				</nav>

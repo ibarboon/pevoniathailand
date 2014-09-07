@@ -32,11 +32,12 @@ class Products_Model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function select_product_list_by_class($arg) {
+	public function do_select_product_list_by_class($arg) {
 		$sql = "select * ";
 		$sql .= "from table_products ";
 		$sql .= "where product_type_id in (select row_id from table_product_type where product_class_id = ?) ";
-		$sql .= "limit ?,6;";
+		$sql .= "order by rand() ";
+		$sql .= "limit ?,12;";
 		try {
 			$query = $this->db->query($sql, $arg);
 		} catch (Exception $e) {
@@ -49,13 +50,26 @@ class Products_Model extends CI_Model {
 		$sql = "select * ";
 		$sql .= "from table_products ";
 		$sql .= "where product_type_id in (select row_id from table_product_type where lower(product_type_alias_name) = lower(?)) ";
-		$sql .= "limit ?,6;";
+		$sql .= "order by rand() ";
+		$sql .= "limit ?,12;";
 		try {
 			$query = $this->db->query($sql, $arg);
 		} catch (Exception $e) {
 			echo 'Caught exception: ' , $e->getMessage();
 		}
 		return $query->result_array();
+	}
+	
+	public function do_select_product($arg) {
+		$sql = "select * ";
+		$sql .= "from table_products ";
+		$sql .= "where row_id = ? ";
+		try {
+			$query = $this->db->query($sql, $arg);
+		} catch (Exception $e) {
+			echo 'Caught exception: ' , $e->getMessage();
+		}
+		return $query->row_array();
 	}
 }
 

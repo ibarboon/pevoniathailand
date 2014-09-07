@@ -1,7 +1,7 @@
 <div id="content">
 	<div class="container floated">
 		<div class="sixteen floated page-title">
-			<h2><?php echo $product['display_name']; ?></h2>
+			<h2><?php echo $product['product_name_en']; ?></h2>
 			<nav id="breadcrumbs">
 				<ul>
 					<li>You are here:</li>
@@ -23,8 +23,8 @@
 				</div>
 				<div class="five columns">
 					<div class="product-info">
-						<h3 class="title"><?php echo $product['display_name']; ?></h3>
-						<p><?php echo $product['product_description']; ?></p>
+						<h3 class="title"><?php echo $product['product_name_en']; ?></h3>
+						<p><?php echo $product['product_detail_en']; ?></p>
 						<div class="clearfix"></div>
 					</div>
 				</div>
@@ -80,10 +80,14 @@
 		<div class="four floated sidebar right">
 			<aside class="sidebar">
 				<nav class="widget">
-					<h4><?php echo $current_view; ?></h4>
+					<h4><?php echo $product_class['product_class_name_en']; ?></h4>
 					<ul class="categories">
-						<?php foreach($product_type_list as $key => $value): ?>
-						<li><a href="<?php echo site_url($current_view.'/'.$value['alias_name']); ?>"><?php echo $value['display_value']; ?></a></li>
+						<?php foreach($product_type_list as $product_type): ?>
+						<li>
+							<a href="<?php echo site_url($default_language.'/'.$breadcrumbs_list['0'].'/'.$product_type['product_type_alias_name']); ?>">
+								<?php echo $product_type['product_type_name_en']; ?>
+							</a>
+						</li>
 						<?php endforeach; ?>
 					</ul>
 				</nav>

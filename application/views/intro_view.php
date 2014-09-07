@@ -17,6 +17,12 @@
 	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
+		<style>
+			.list-inline li, .list-inline li a {
+				color: #888 !important;
+				text-decoration: none;
+			}
+		</style>	
 	</head>
 	<body>
 		<header id="myCarousel" class="carousel slide">
@@ -36,19 +42,27 @@
 				<div class="item<?php echo $attr; ?>">
 					<div class="fill" style="background-image:url('<?php echo base_url('assets/images/'.$carousel['option_value']); ?>');"></div>
 					<div class="carousel-caption">
-						<p class="text-right">
+						<p>
+							<a class="button color" href="<?php echo site_url($default_language['language'].'/home')?>" role="button">เข้าสู่เว็บไซต / Enter Website</a>
+						</p>
+						<ul class="list-inline">
 							<?php
 								foreach ($social_network_list as $social_network_id => $social_network) {
 								if (strrpos($social_network['option_value'], '|')) {
 									$sn = explode('|', $social_network['option_value']);
 								}
 							?>
-							<a class="button light" href="<?php echo $sn[1]; ?>" role="button"><i class="<?php echo $sn[0]; ?>"></i> <!--?php echo strtoupper($social_network['option_key']); ?--></a>
-							<?php } ?>
-						</p>
-						<p class="text-right">
-							<a class="button color" href="<?php echo site_url($default_language['language'].'/home')?>" role="button">เข้าเว็บไซต / Enter Website</a>
-						</p>
+							<li>
+								<a href="<?php echo $sn[1]; ?>"><?php echo strtoupper($social_network['option_key']); ?></a>
+							</li>
+							<!--a class="button light" href="<?php echo $sn[1]; ?>" role="button"><i class="<?php echo $sn[0]; ?>"></i> <!--?php echo strtoupper($social_network['option_key']); ?--></a-->
+							<?php
+									if ($social_network !== end($social_network_list)) {
+										echo '<li>|</li>';
+									}
+								}
+							?>
+						</ul>
 					</div>
 				</div>
 				<?php } ?>

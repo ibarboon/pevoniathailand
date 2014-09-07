@@ -15,7 +15,10 @@
 		<div class="eleven floated">
 			<div class="shop-page page-content">
 				<div id="portfolio-wrapper">
-					<?php foreach($product_list as $product):?>
+					<?php
+						$pre_url = $default_language.'/'.implode('/', $breadcrumbs_list);
+						foreach($product_list as $product):
+					?>
 					<div class="four-shop columns isotope-item">
 						<div class="shop-item">
 							<figure>
@@ -23,7 +26,7 @@
 									<img src="<?php echo base_url('/assets/images/products/'.$product['product_image']); ?>" alt="" />
 								</a>
 								<figcaption class="item-description">
-									<a href="javascript:void(0);"><h5><?php echo $product['product_name_th']; ?></h5></a>
+									<a href="<?php echo site_url($pre_url.'/'.$product['row_id']); ?>"><h5><?php echo $product['product_name_th']; ?></h5></a>
 								</figcaption>
 							</figure>
 						</div>
@@ -38,7 +41,11 @@
 					<h4><?php echo $product_class['product_class_name_en']; ?></h4>
 					<ul class="categories">
 						<?php foreach($product_type_list as $product_type): ?>
-						<li><a href="<?php echo site_url($current_view.'/'.$product_type['product_type_alias_name']); ?>"><?php echo $product_type['product_type_name_en']; ?></a></li>
+						<li>
+							<a href="<?php echo site_url($default_language.'/'.$breadcrumbs_list['0'].'/'.$product_type['product_type_alias_name']); ?>">
+								<?php echo $product_type['product_type_name_en']; ?>
+							</a>
+						</li>
 						<?php endforeach; ?>
 					</ul>
 				</nav>

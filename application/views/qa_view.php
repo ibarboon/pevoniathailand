@@ -11,37 +11,50 @@
 			</nav>
 		</div>
 	</div>
-	<div class="page-content">
-		<div class="container">
-			<div class="two-thirds column">
-				<?php
-					foreach($qa_list as $key => $value):
-					$attr = ($key === 0)? ' opened': NULL;
-				?>
-				<div class="toggle-wrap">
-					<span class="trigger <?php echo $attr; ?>"><a href="#"><i class="toggle-icon"></i> <?php echo $value['qa_question']; ?> </a></span>
-					<div class="toggle-container">
-						<div class="four columns">
-							<a href="<?php echo base_url('/assets/images/qa/'.$value['qa_image']); ?>" rel="fancybox-gallery">
-								<img src="<?php echo base_url('/assets/images/qa/'.$value['qa_image']); ?>"/ style="border: 1px solid #E0E0E0;">
-							</a>
-						</div>
-						<div class="five columns">
-							<p><?php echo $value['qa_answer']; ?></p>
-						</div>
-						<div class="clearfix"></div>
-						<br>
-					</div>
-				</div>
-				<?php endforeach; ?>
-			</div>
-			<div class="one-third column">
-				<div class="large-notice">
-					<h2>Don't See the <br /> Answer You Need?</h2>
-					<p>If you don't see the answer for your question send us a message and we will answer you as soon as possible, within a few hours.</p>
-					<a href="Javascript: void(0);" class="button medium color">Contact Us</a>
-				</div>
-			</div>
+	<div class="container floated">
+		<div class="eleven floated">
+			<?php foreach($qa_list as $qa) { ?>
+				<article class="post">
+					<figure class="post-img">
+						<a href="javascript:void(0);">
+							<?php echo '<img alt="" src="'.base_url('/assets/images/'.$qa['qa_image']).'">'; ?>
+						</a>
+					</figure>
+					<section class="date">
+						<span class="day"><?php echo $qa['qa_d']; ?></span>
+						<span class="month"><?php echo $qa['qa_m']; ?></span>
+					</section>
+					<section class="post-content">
+						<header class="meta">
+							<h2><?php echo $qa['qa_question']; ?></h2>
+							<span><i class="halflings user"></i>By <a href="javascript:void(0);"><?php echo $qa['created_by']; ?></a></span>
+						</header>
+						<p><?php echo $qa['qa_answer']; ?></p>
+					</section>
+				</article>
+				<div class="line"></div>
+			<?php } ?>
+		</div>
+		<div class="four floated sidebar right">
+			<aside class="sidebar">
+				<nav class="widget-search">
+					<form method="get" action="#">
+						<button class="search-btn-widget"></button>
+						<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
+					</form>
+				</nav>
+				<div class="clearfix"></div>
+				<nav class="widget">
+					<h4>Archives</h4>
+					<ul class="categories">
+						<?php
+							foreach($archives_list as $key => $value) {
+								echo '<li><a href="'.site_url($default_language.'/q-and-a/archives/'.strtolower(str_replace(' ', '-', $value['archives']))).'">'.$value['archives'].'</a></li>';
+							}
+						?>
+					</ul>
+				</nav>
+			</aside>
 		</div>
 	</div>
 </div>
