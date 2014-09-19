@@ -33,6 +33,19 @@
 					</div>
 					<?php endforeach; ?>
 				</div>
+				<div style="margin-top: 30px; margin-bottom: 40px;" class="line"></div>
+				<div class="container">
+					<div class="sixteen columns">
+						<h3 class="margin-reset">ดาวน์โหลดเอกสาร</h3>
+						<br>
+						<ul class="check-list">
+							<li><a href="<?php echo base_url('assets/download/test.pdf'); ?>">รายละเอียดสินค้า</a></li>
+							<li><a href="<?php echo base_url('assets/download/test.pdf'); ?>">รายละเอียดสินค้า</a></li>
+							<li><a href="<?php echo base_url('assets/download/test.pdf'); ?>">รายละเอียดสินค้า</a></li>
+							<li><a href="<?php echo base_url('assets/download/test.pdf'); ?>">รายละเอียดสินค้า</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="four floated sidebar right">
