@@ -67,6 +67,7 @@
 							}
 						endforeach;
 					?>
+					<li><a href="<?php echo site_url($default_language.'/search'); ?>"><i class="icon-search"></i></a></li>
 				</ul>
 			</nav>
 			<div class="clearfix"></div>

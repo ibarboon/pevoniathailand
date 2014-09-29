@@ -23,8 +23,13 @@ class Contents extends CI_Controller {
 				$this->load->view('content_view', $arg);
 			}
 		} else {
-			$arg['content_list'] = $this->contents_model->get_content_list($this->uri->segment(2));
-			$this->load->view('content_list_view', $arg);
+			if (strcmp($this->uri->segment(2),'pevonia-spas') === 0) {
+				$arg['content_list'] = $this->contents_model->get_content_list($this->uri->segment(2));
+				$this->load->view('pevonia_spas_view', $arg);
+			} else {
+				$arg['content_list'] = $this->contents_model->get_content_list($this->uri->segment(2));
+				$this->load->view('content_list_view', $arg);
+			}
 		}
 		$this->load->view('footer_view', $arg);
 	}

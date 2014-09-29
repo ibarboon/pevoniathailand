@@ -34,34 +34,33 @@
 						<li><i class="icon-ban-circle"></i>Saturday - Sunday<span class="hours">Closed</span></li>
 					</ul>
 				</div>
+				<div class="widget">
+					<h4>How to Order</h4>
+					<ul class="check-list">
+						<li>Call direct : 02-489-4955-7, +66 2489 4955-7</li>
+						<li>E-mail : info@pevoniathailand.com</li>
+						<li>For more information https://www.facebook.com/pevoniathailand</li>
+					</ul>
+				</div>
+				<div class="widget">
+					<h4>Payment Channel</h4>
+					<ul>
+						<li>Bank of Ayudhya Public Company Limited.</li>
+						<li>Branch : Seacon Bangkae (Saving Account)</li>
+						<li>Name of Account : Pevonia (Thailand) Co., Ltd.</li>
+						<li>Account No. 289-1-41017-1</li>
+					</ul>
+				</div>
 			</aside>
 		</div>
-		<div class="ten floated right">
+		<div class="ten floated right" style="min-height: 700px;">
 			<section class="page-content">
 				<h3 class="margin-reset">Our Location</h3>
 				<br>
 				<a href="<?php echo base_url('/assets/images/office_map.jpg'); ?>" rel="fancybox-gallery">
 					<img src="<?php echo base_url('/assets/images/office_map.jpg'); ?>"/>
 				</a>
-				<!--section class="google-map-container">
-					<div id="googlemaps" class="google-map google-map-full" style="padding-bottom: 100%"></div>
-					<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-					<script src="<?php echo base_url('/assets/scripts/jquery.gmap.min.js'); ?>"></script>
-					<script type="text/javascript">
-						$('#googlemaps').gMap({
-							maptype: 'ROADMAP',
-							scrollwheel: false,
-							zoom: 16,
-							markers: [
-								{
-									latitude: 13.802971,
-									longitude: 100.450342,
-									popup: false,
-								}
-							]
-						});
-					</script>
-				</section-->
+				<div class="clearfix"></div>
 			</section>
 		</div>
 	</div>

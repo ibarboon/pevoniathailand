@@ -9,7 +9,7 @@ $route['(en|th)/(pevonia-spas|pevonia-spas/(:any)|pevonia-spas/archives/(:any))'
 $route['(en|th)/(activities|activities/(:any)|activities/archives/(:any))'] = 'contents';
 $route['(en|th)/(q-and-a|q-and-a/archives/(:any))'] = 'qa';
 $route['(en|th)/customer-service'] = 'customer_service';
-$route['default_controller'] = 'intro';
+$route['default_controller'] = 'home';
 $route['404_override'] = 'home/_http_404';
 
 /* End of file routes.php */

@@ -22,6 +22,7 @@
 				color: #888 !important;
 				text-decoration: none;
 			}
+			a:hover { text-decoration: none; }
 		</style>	
 	</head>
 	<body>
