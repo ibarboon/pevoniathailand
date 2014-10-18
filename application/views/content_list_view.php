@@ -47,13 +47,6 @@
 		</div>
 		<div class="four floated sidebar right">
 			<aside class="sidebar">
-				<nav class="widget-search">
-					<form method="get" action="#">
-						<button class="search-btn-widget"></button>
-						<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
-					</form>
-				</nav>
-				<div class="clearfix"></div>
 				<nav class="widget">
 					<h4>Archives</h4>
 					<ul class="categories">

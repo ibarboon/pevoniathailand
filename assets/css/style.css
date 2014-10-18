@@ -3590,6 +3590,10 @@ table.standard-table.shop td {
 		margin-top: 20px;
 	}
 
+	#footer .widget-search { /* add by wiboon */
+		margin-top: 20px;
+	}
+
 	#footer {
 		padding-top: 20px;
 	}

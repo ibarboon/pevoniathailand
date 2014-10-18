@@ -7,7 +7,7 @@ class QA extends CI_Controller {
 	
 	public function index() {
 		$arg['default_language'] = $this->utility_model->get_default_language($this->uri->segment(1));
-		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
+		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(2): 'home';
 		$arg['menu_list'] = $this->utility_model->get_menu_list('menu_'.$arg['default_language']);
 		$arg['archives_list'] = $this->qa_model->get_archives_list($arg['default_language']);
 		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');

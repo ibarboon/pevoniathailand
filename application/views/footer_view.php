@@ -1,11 +1,11 @@
 		</div>
 		<footer id="footer">
 			<div class="container">
-				<div class="one-third column">
+				<div class="four columns">
 					<img id="logo-footer" src="<?php echo base_url('/assets/images/pevonia-flower-02.png'); ?>" alt="Pevonia Thailand" />
 					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 				</div>
-				<div class="one-third column">
+				<div class="four columns">
 					<h4>CONTACT INFO</h4>
 					<ul class="contact-details-alt">
 						<?php
@@ -18,13 +18,21 @@
 						?>
 					</ul>
 				</div>
-				<div class="one-third column">
+				<div class="four columns">
 					<h4>Social Network</h4>
 					<ul class="social-network-icons">
 						<li><a href="https://www.facebook.com/pevoniathailand"><i class="fa fa-facebook fa-3x"></i></a></li>
 						<li><a href="http://instagram.com/pevoniathailand/"><i class="fa fa-instagram fa-3x"></i></a></li>
 						<li><a href="https://twitter.com/PevoniaThailand"><i class="fa fa-twitter fa-3x"></i></a></li>
 					</ul>
+				</div>
+				<div class="four columns">
+					<nav class="widget-search" style="top: 5px important;">
+						<form method="get" action="404-page.html">
+							<button class="search-btn"></button>
+							<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
+						</form>
+					</nav>
 				</div>
 			</div>
 		</footer>
