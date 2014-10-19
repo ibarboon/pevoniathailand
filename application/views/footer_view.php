@@ -27,7 +27,7 @@
 					</ul>
 				</div>
 				<div class="four columns">
-					<nav class="widget-search" style="top: 5px important;">
+					<nav class="widget-search">
 						<form method="get" action="404-page.html">
 							<button class="search-btn"></button>
 							<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">

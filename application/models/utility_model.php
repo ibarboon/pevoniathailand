@@ -6,9 +6,9 @@ class Utility_Model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function get_option_by_type($arg, $format) {
+	public function get_option_by_type($arg, $format = NULL) {
 		$sql = "select row_id option_id, option_key, option_value ";
-		$sql .= "from pt_options ";
+		$sql .= "from cms_options ";
 		$sql .= "where lower(option_type) = lower(?) ";
 		$sql .= "order by option_sequence asc;";
 		$query = $this->db->query($sql, $arg);
@@ -25,7 +25,7 @@ class Utility_Model extends CI_Model {
 	
 	public function get_menu_list($arg) {
 		$sql = "select option_key, option_value ";
-		$sql .= "from pt_options ";
+		$sql .= "from cms_options ";
 		$sql .= "where lower(option_type) = lower(?) ";
 		$sql .= "order by option_sequence";
 		$query = $this->db->query($sql, $arg);
@@ -36,7 +36,7 @@ class Utility_Model extends CI_Model {
 	}
 	
 	public function get_default_language($arg) {
-		if ($arg === FALSE) {
+		if ($arg != 'en' OR $arg != 'th') {
 			$default_language = $this->get_option_by_type('default_language', 'customize');
 			return $default_language['language'];
 		} else {

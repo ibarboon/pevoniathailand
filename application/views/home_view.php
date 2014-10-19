@@ -1,9 +1,9 @@
 <div id="content">
 	<section class="flexslider home">
 		<ul class="slides">
-			<li><a href="#"><img src="<?php echo base_url('/assets/images/home-slide-1.jpg'); ?>" alt="" /></a></li>
-			<li><img src="<?php echo base_url('/assets/images/home-slide-2.jpg'); ?>" alt="" /></li>
-			<li><img src="<?php echo base_url('/assets/images/home-slide-3.jpg'); ?>" alt="" /></li>
+			<?php foreach($slides as $slide) { ?>
+			<li><a href="<?php echo $slide['option_value']; ?>"><img src="<?php echo base_url('/assets/images/slides/'.$slide['option_key']); ?>" alt="" /></a></li>
+			<?php } ?>
 		</ul>
 	</section>
 	<div class="container">
