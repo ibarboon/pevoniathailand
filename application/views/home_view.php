@@ -11,13 +11,19 @@
 			<div class="one-third column">
 				<article class="icon-box">
 					<h3>Why Pevonia</h3>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<a href="#">read more</a></p>
+					<p>
+						<?php echo substr($why_pevonia['content_body'], 0, 128); ?>
+						<a href="<?php echo site_url($default_language.'/why-pevonia'); ?>"><?php echo ($default_language === 'en')? 'read more': 'อ่านต่อ'; ?></a>
+					</p>
 				</article>
 			</div>
 			<div class="one-third column">
 				<article class="icon-box">
 					<h3>News</h3>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<a href="#">read more</a></p>
+					<p>
+						<?php echo substr($news['content_body'], 0, 128); ?>
+						<a href="<?php echo site_url($default_language.'/news'); ?>"><?php echo ($default_language === 'en')? 'read more': 'อ่านต่อ'; ?></a>
+					</p>
 				</article>
 			</div>
 			<div class="one-third column">
@@ -83,11 +89,11 @@
 		<div class="container">
 			<div class="eight columns">
 				<h3 class="margin-reset">Pevonia Spa</h3>
-				<img alt="Pevonia Spa" src="<?php echo base_url('assets/images/test.jpg'); ?>">
+				<img alt="Pevonia Spa" src="<?php echo base_url('assets/images/'.$home_content['pevonia_spa']); ?>">
 			</div>
 			<div class="eight columns">
 				<h3 class="margin-reset">Professional Zone</h3>
-				<img alt="Professional Zone" src="<?php echo base_url('assets/images/test.jpg'); ?>">
+				<img alt="Professional Zone" src="<?php echo base_url('assets/images/'.$home_content['professional_zone']); ?>">
 			</div>
 		</div>
 	</div>

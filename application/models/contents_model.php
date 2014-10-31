@@ -44,9 +44,11 @@ class Contents_Model extends CI_Model {
 	}
 
 	public function get_content($arg) {
-		$sql = "select row_id content_id, date_format(created_dt,'%e') d, date_format(created_dt,'%M') m, created_by, content_alias_name, content_header, content_body , content_media ";
-		$sql .= "from tbl_contents ";
-		$sql .= "where content_alias_name = ?";
+		$sql = "select row_id content_id, date_format(created,'%e') d, date_format(created,'%M') m, created_by, content_alias_name, content_header, content_body , content_media ";
+		$sql .= "from cms_contents ";
+		$sql .= "where content_type = ? ";
+		$sql .= "order by created desc ";
+		$sql .= "limit 1";
 		$query = $this->db->query($sql, $arg);
 		return $query->row_array();
 	}

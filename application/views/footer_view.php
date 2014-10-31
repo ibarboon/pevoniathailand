@@ -3,7 +3,9 @@
 			<div class="container">
 				<div class="four columns">
 					<img id="logo-footer" src="<?php echo base_url('/assets/images/pevonia-flower-02.png'); ?>" alt="Pevonia Thailand" />
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					<p>
+						<?php echo substr($why_pevonia['content_body'], 0, 128); ?>
+					</p>
 				</div>
 				<div class="four columns">
 					<h4>CONTACT INFO</h4>
@@ -21,14 +23,17 @@
 				<div class="four columns">
 					<h4>Social Network</h4>
 					<ul class="social-network-icons">
-						<li><a href="https://www.facebook.com/pevoniathailand"><i class="fa fa-facebook fa-3x"></i></a></li>
-						<li><a href="http://instagram.com/pevoniathailand/"><i class="fa fa-instagram fa-3x"></i></a></li>
-						<li><a href="https://twitter.com/PevoniaThailand"><i class="fa fa-twitter fa-3x"></i></a></li>
+						<?php
+							foreach ($social_network_list as $social_network) {
+								$sn = explode('|', $social_network['option_value']);
+						?>
+						<li><a href="<?php echo $sn[1]; ?>"><img src="<?php echo base_url('assets/images/'.$sn[0]); ?>"></a></li>
+						<?php } ?>
 					</ul>
 				</div>
 				<div class="four columns">
 					<nav class="widget-search">
-						<form method="get" action="404-page.html">
+						<form method="post" action="#">
 							<button class="search-btn"></button>
 							<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
 						</form>
@@ -44,8 +49,8 @@
 				<div class="eight columns">
 					<nav id="sub-menu">
 						<ul>
-							<li><a href="#">EN</a></li>
-							<li><a href="#">TH</a></li>
+							<li><a href="<?php echo site_url('en/'.$current_view); ?>">EN</a></li>
+							<li><a href="<?php echo site_url('th/'.$current_view); ?>">TH</a></li>
 						</ul>
 					</nav>
 				</div>

@@ -35,13 +35,9 @@ class Utility_Model extends CI_Model {
 		return $menu_list;
 	}
 	
-	public function get_default_language($arg) {
-		if ($arg != 'en' OR $arg != 'th') {
-			$default_language = $this->get_option_by_type('default_language', 'customize');
-			return $default_language['language'];
-		} else {
-			return $arg;
-		}
+	public function get_default_language() {
+		$default_language = $this->get_option_by_type('default_language', 'customize');
+		return $default_language['language'];
 	}
 }
 
