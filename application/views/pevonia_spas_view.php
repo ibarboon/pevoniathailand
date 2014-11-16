@@ -14,30 +14,30 @@
 	<div class="container floated">
 		<div class="eleven floated">
 			<div class="page-content">
-				<div class="toggle-wrap">
-					<span class="trigger opened"><a href="#"><i class="toggle-icon"></i> What is a Premium Theme? </a></span>
-					<div class="toggle-container">
-						<div class="four columns">
-							<img alt="" src="<?php echo base_url('assets/images/portfolio/portfolio-01.jpg'); ?>">
+				<?php
+					foreach ($content_list as $key => $value) {
+						$attr = ($key == 0)? 'opened': NULL;
+				?>
+					<div class="toggle-wrap">
+						<span class="trigger <?php echo $attr; ?>"><a href="#"><i class="toggle-icon"></i> <?php echo $value['content_header']; ?></a></span>
+						<div class="toggle-container">
+							<div class="four columns">
+								<?php
+									$media = explode('|',$value['content_media']);
+									if($media[0] === 'image'){
+										echo '<img alt="" src="'.base_url('/assets/images/'.$media[1]).'">';
+									} else {
+										//
+									}
+								?>
+							</div>
+							<div class="six columns">
+								<p><?php echo $value['content_body']; ?></p>
+							</div>
+							<div class="clearfix"></div>
 						</div>
-						<div class="six columns">
-							<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Vivamus justo arcu, elementum a sollicitudin pellentesque, tincidunt ac enim. Proin id arcu ut ipsum vestibulum elementum.</p>
-						</div>
-						<div class="clearfix"></div>
 					</div>
-				</div>
-				<div class="toggle-wrap">
-					<span class="trigger"><a href="#"><i class="toggle-icon"></i> How much does it cost?</a></span>
-					<div class="toggle-container">
-						<div class="four columns">
-							<img alt="" src="<?php echo base_url('assets/images/portfolio/portfolio-01.jpg'); ?>">
-						</div>
-						<div class="six columns">
-							<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Vivamus justo arcu, elementum a sollicitudin pellentesque, tincidunt ac enim. Proin id arcu ut ipsum vestibulum elementum.</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
+				<?php } ?>
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -47,8 +47,8 @@
 					<h4>Pevonia Spas</h4>
 					<ul class="categories">
 						<?php
-							foreach($archives_list as $key => $value) {
-								echo '<li><a href="'.site_url($default_language.'/'.strtolower($breadcrumbs_list[2]).'/archives/'.strtolower(str_replace(' ', '-', $value['archives']))).'">'.$value['archives'].'</a></li>';
+							foreach($spas_list as $key => $value) {
+								echo '<li><a href="javascript: void(0);">'.$value['spa'].'</a></li>';
 							}
 						?>
 					</ul>

@@ -32,44 +32,58 @@
 				<br />
 				<div class="eleven columns">
 					<ul class="tabs-nav">
-						<li class="active"><a href="#tab1">Description</a></li>
-						<li><a href="#tab2">Additional Information</a></li>
+						<li class="active"><a href="#tab1">Benefit</a></li>
+						<li><a href="#tab2">Usage</a></li>
+						<li><a href="#tab3">Key Ingredient</a></li>
 					</ul>
 					<div class="tabs-container">
 						<div class="tab-content" id="tab1">
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 							<p>
-								<ul class="check-list">
-									<li>Justo duo dolores et ea rebum</li>
-									<li>Duis autem vel eum iriure dolor</li>
-									<li>Stet clita kasd gubergren</li>
-								</ul>
+								<?php
+									if (strpos($product['benefit_'.$default_language], '|')) {
+										$benefit_list = explode('|', $product['benefit_'.$default_language]);
+										echo '<ul class="check-list">';
+										foreach ($benefit_list as $benefit) {
+											echo "<li>$benefit</li>";
+										}
+										echo '</ul>';
+									} else {
+										echo $product['benefit_'.$default_language];
+									}
+								?>
 							</p>
-							<p>In hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
 						</div>
 						<div class="tab-content" id="tab2">
-							<table class="standard-table shop">
-								<tr>
-									<th>Key#1</th>
-									<td>Value#1</td>
-								</tr>
-								<tr>
-									<th>Key#2</th>
-									<td>Value#2</td>
-								</tr>
-								<tr>
-									<th>Key#3</th>
-									<td>Value#3</td>
-								</tr>
-								<tr>
-									<th>Key#4</th>
-									<td>Value#4</td>
-								</tr>
-								<tr>
-									<th>Key#5</th>
-									<td>Value#5</td>
-								</tr>
-							</table>
+							<p>
+								<?php
+									if (strpos($product['usage_'.$default_language], '|')) {
+										$benefit_list = explode('|', $product['benefit_'.$default_language]);
+										echo '<ul class="check-list">';
+										foreach ($benefit_list as $benefit) {
+											echo "<li>$benefit</li>";
+										}
+										echo '</ul>';
+									} else {
+										echo $product['benefit_'.$default_language];
+									}
+								?>
+							</p>
+						</div>
+						<div class="tab-content" id="tab3">
+							<p>
+								<?php
+									if (strpos($product['key_ingredient_'.$default_language], '|')) {
+										$benefit_list = explode('|', $product['benefit_'.$default_language]);
+										echo '<ul class="check-list">';
+										foreach ($benefit_list as $benefit) {
+											echo "<li>$benefit</li>";
+										}
+										echo '</ul>';
+									} else {
+										echo $product['benefit_'.$default_language];
+									}
+								?>
+							</p>
 						</div>
 					</div>
 				</div>

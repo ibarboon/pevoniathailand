@@ -33,9 +33,9 @@
 				</div>
 				<div class="four columns">
 					<nav class="widget-search">
-						<form method="post" action="#">
-							<button class="search-btn"></button>
-							<input type="text" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
+						<form method="post" action="<?php echo site_url($default_language.'/search'); ?>">
+							<button type="submit" class="search-btn"></button>
+							<input type="text" name="in-keyword" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" class="search-field">
 						</form>
 					</nav>
 				</div>

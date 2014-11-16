@@ -15,15 +15,15 @@
 		<div class="container">
 			<div class="sixteen columns">
 				<?php
-					if ($content['content_media'] !== NULL) {
-						$media = explode('|', $content['content_media']);
+					if ($why_pevonia['content_media'] !== NULL) {
+						$media = explode('|', $why_pevonia['content_media']);
 						if ($media[0] === 'image') {
 				?>
 				<img alt="" src="<?php echo base_url('assets/images/'.$media[1]); ?>">
 				<?php } ?>
 				<?php } ?>
 				<br>
-				<p><?php echo $content['content_body']; ?></p>
+				<p><?php echo $why_pevonia['content_body']; ?></p>
 			</div>
 		</div>
 	</div>

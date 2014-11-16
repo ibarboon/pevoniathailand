@@ -6,51 +6,121 @@ class Contents_Model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function get_content_list($arg) {
-		if(count($arg) === 0) {
-			$sql = "select row_id content_id, content_alias_name, content_header, content_body ";
-			$sql .= "from tbl_contents ";
-			$sql .= "order by last_updated_dt desc;";
-		} elseif(count($arg) === 1) {
-			$sql = "select row_id content_id, date_format(created_dt,'%e') d, date_format(created_dt,'%M') m, created_by, content_alias_name, content_header, content_body , content_media ";
-			$sql .= "from tbl_contents ";
-			$sql .= "where lower(content_type) = lower(?) ";
-			$sql .= "and content_language = 'ENG' ";
-			$sql .= "order by created_dt desc;";
-		} elseif(count($arg) === 2) {
-			$sql = "select row_id content_id, date_format(created_dt,'%e') d, date_format(created_dt,'%M') m, created_by, content_alias_name, content_header, content_body , content_media ";
-			$sql .= "from tbl_contents ";
-			$sql .= "where lower(content_type) = lower(?) ";
-			$sql .= "and date_format(created_dt,'%M-%Y') = ? ";
-			$sql .= "and content_language = 'ENG' ";
-			$sql .= "order by created_dt desc;";
-		}
-		$query = $this->db->query($sql, $arg);
+	public function get_content_list() {
+		$sql = "select * ";
+		$sql .= "from cms_contents ";
+		$sql .= "order by content_type, content_language, created desc";
+		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
 	
-	public function get_archives_list($arg = NULL) {
-		if(is_null($arg)) {
-			//
-		} else {
-			$sql = "select distinct date_format(created_dt,'%M %Y') archives ";
-			$sql .= "from tbl_contents ";
-			$sql .= "where lower(content_type) = lower(?) ";
-			$sql .= "and content_language = 'ENG' ";
-			$sql .= "order by created_dt;";
-		}
-		$query = $this->db->query($sql, $arg);
+	public function get_content_list_by_type($in_content_type, $in_content_language) {
+		$sql = "select row_id content_id, date_format(created,'%e') d, substring(date_format(created,'%M'), 1, 3) m, created_by, content_alias_name, content_header, content_body , content_media ";
+		$sql .= "from cms_contents ";
+		$sql .= "where lower(content_type) = lower(?) ";
+		$sql .= "and content_language = ? ";
+		$sql .= "order by created desc";
+		$query = $this->db->query($sql, array($in_content_type, $in_content_language));
+		return $query->result_array();
+	}
+	
+	public function get_content_list_by_archives($in_archives, $in_content_type, $in_content_language) {
+		$sql = "select row_id content_id, date_format(created,'%e') d, substring(date_format(created,'%M'), 1, 3) m, created_by, content_alias_name, content_header, content_body , content_media ";
+		$sql .= "from cms_contents ";
+		$sql .= "where lower(date_format(created,'%M-%Y')) = ? ";
+		$sql .= "and lower(content_type) = lower(?) ";
+		$sql .= "and content_language = ? ";
+		$sql .= "order by created desc";
+		$query = $this->db->query($sql, array($in_archives, $in_content_type, $in_content_language));
+		return $query->result_array();
+	}
+	
+	public function get_archives_list($in_content_type, $in_content_language) {
+		$sql = "select distinct date_format(created,'%M %Y') archives ";
+		$sql .= "from cms_contents ";
+		$sql .= "where lower(content_type) = lower(?) ";
+		$sql .= "and content_language = ? ";
+		$sql .= "order by created";
+		$query = $this->db->query($sql, array($in_content_type, $in_content_language));
+		return $query->result_array();
+	}
+	
+	public function get_spas_list($in_content_type, $in_content_language) {
+		$sql = "select distinct content_header spa ";
+		$sql .= "from cms_contents ";
+		$sql .= "where lower(content_type) = lower(?) ";
+		$sql .= "and content_language = ? ";
+		$sql .= "order by content_header";
+		$query = $this->db->query($sql, array($in_content_type, $in_content_language));
 		return $query->result_array();
 	}
 
-	public function get_content($arg) {
-		$sql = "select row_id content_id, date_format(created,'%e') d, date_format(created,'%M') m, created_by, content_alias_name, content_header, content_body , content_media ";
+	public function get_content($in_content_alias_name, $in_content_language) {
+		$sql = "select row_id content_id, date_format(created,'%e') d, substring(date_format(created,'%M'), 1, 3) m, created_by, content_alias_name, content_header, content_body , content_media ";
+		$sql .= "from cms_contents ";
+		$sql .= "where content_alias_name = ? ";
+		$sql .= "and content_language = ? ";
+		$sql .= "limit 1";
+		$query = $this->db->query($sql, array($in_content_alias_name, $in_content_language));
+		return $query->row_array();
+	}
+	
+	public function get_content_by_id($content) {
+		$sql = "select * ";
+		$sql .= "from cms_contents ";
+		$sql .= "where row_id = ? ";
+		$sql .= "limit 1";
+		$query = $this->db->query($sql, $content);
+		return $query->row_array();
+	}
+	
+	public function get_last_content($in_content_type, $in_content_language) {
+		$sql = "select row_id content_id, date_format(created,'%e') d, substring(date_format(created,'%M'), 1, 3) m, created_by, content_alias_name, content_header, content_body , content_media ";
 		$sql .= "from cms_contents ";
 		$sql .= "where content_type = ? ";
+		$sql .= "and content_language = ? ";
 		$sql .= "order by created desc ";
 		$sql .= "limit 1";
-		$query = $this->db->query($sql, $arg);
+		$query = $this->db->query($sql, array($in_content_type, $in_content_language));
 		return $query->row_array();
+	}
+	
+	public function do_add($content) {
+		$sql = "insert into cms_contents (row_id, created, created_by, last_updated, last_updated_by, content_type, content_alias_name, content_header, content_body, content_media, content_language) ";
+		$sql .= "values (null, now(), ?, now(), ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			$this->db->query($sql, $content);
+		} catch (Exception $e) {
+			echo 'Caught exception: ' , $e->getMessage();
+		}
+		return $this->db->affected_rows();
+	}
+	
+	public function do_edit($content) {
+		$sql = "update cms_contents ";
+		$sql .= "set last_updated = now(), last_updated_by = ?, content_type = ?, content_alias_name = ?, content_header = ?, content_body = ?, content_media = ?, content_language = ? ";
+		$sql .= "where row_id = ?";
+		try {
+			$this->db->query($sql, $content);
+		} catch (Exception $e) {
+			echo 'Caught exception: ' , $e->getMessage();
+		}
+		return $this->db->affected_rows();
+	}
+	
+	public function do_delete($content_list) {
+		$affected_rows = 0;
+		foreach ($content_list as $content) {
+			$sql = "delete from cms_contents ";
+			$sql .= "where row_id in (?)";
+			try {
+				$this->db->query($sql, $content);
+			} catch (Exception $e) {
+				echo 'Caught exception: ' , $e->getMessage();
+			}
+			$affected_rows += $this->db->affected_rows();
+		}
+		return $affected_rows;
 	}
 }
 

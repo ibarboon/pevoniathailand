@@ -6,8 +6,17 @@
 			<li class="active"><span class="glyphicon glyphicon-user"></span>&nbsp;Users</li>
 		</ol>
 		<p class="text-right">
-			<button class="btn btn-success" data-toggle="modal" data-target="#add-photo-modal"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add User</button>
+			<a class="btn btn-success" href="<?php echo site_url('backend/users/add'); ?>"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add User</a>
 		</p>
+		<?php
+			if (isset($mysql_result)) {
+				if ($mysql_result > 0) {
+					echo '<div class="alert alert-success" role="alert"><strong>Succeed:</strong> '.$mysql_result.' row(s) affected</div>';
+				} else {
+					echo '<div class="alert alert-danger" role="alert"><strong>Failed:</strong> '.$mysql_result.' row(s) affected</div>';
+				}
+			}
+		?>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>

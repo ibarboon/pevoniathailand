@@ -16,7 +16,7 @@ class Contents extends CI_Controller {
 		$this->load->view('header_view', $arg);
 		if($this->uri->segment(3)) {
 			if($this->uri->segment(3) == 'archives') {
-				$arg['content_list'] = $this->contents_model->get_content_list(array($this->uri->segment(2), $this->uri->segment(4)));
+				$arg['content_list'] = $this->contents_model->get_content_list_by_type(array($this->uri->segment(2), $this->uri->segment(4)));
 				$this->load->view('content_list_view', $arg);
 			} else {
 				$arg['content'] = $this->contents_model->get_content($this->uri->segment(3));
@@ -24,10 +24,10 @@ class Contents extends CI_Controller {
 			}
 		} else {
 			if (strcmp($this->uri->segment(2),'pevonia-spas') === 0) {
-				$arg['content_list'] = $this->contents_model->get_content_list($this->uri->segment(2));
+				$arg['content_list'] = $this->contents_model->get_content_list_by_type($this->uri->segment(2));
 				$this->load->view('pevonia_spas_view', $arg);
 			} else {
-				$arg['content_list'] = $this->contents_model->get_content_list($this->uri->segment(2));
+				$arg['content_list'] = $this->contents_model->get_content_list_by_type($this->uri->segment(2));
 				$this->load->view('content_list_view', $arg);
 			}
 		}

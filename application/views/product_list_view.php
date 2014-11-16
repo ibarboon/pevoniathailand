@@ -26,7 +26,7 @@
 									<img src="<?php echo base_url('/assets/images/products/'.$product['product_image']); ?>" alt="" />
 								</a>
 								<figcaption class="item-description">
-									<a href="<?php echo site_url($pre_url.'/'.$product['row_id']); ?>"><h5><?php echo $product['product_name_th']; ?></h5></a>
+									<a href="<?php echo site_url($pre_url.'/'.$product['product_code']); ?>"><h5><?php echo $product['product_name_th']; ?></h5></a>
 								</figcaption>
 							</figure>
 						</div>
@@ -47,6 +47,14 @@
 							</a>
 						</li>
 						<?php endforeach; ?>
+					</ul>
+				</nav>
+				<nav class="widget">
+					<h4>Download Lists</h4>
+					<ul class="categories">
+						<?php foreach ($download_list as $download_item) { ?>
+						<li><a href="<?php echo base_url('/assets/download/'.$download_item['option_value']); ?>" target="_blank"><?php echo $download_item['option_value']; ?></a></li>
+						<?php } ?>
 					</ul>
 				</nav>
 			</aside>

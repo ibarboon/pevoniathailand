@@ -14,14 +14,42 @@ class Users extends CI_Controller {
 		$params['user_data'] = $this->session->userdata('user_data');
 		$params['current_page'] = ($this->uri->segment(2))? $this->uri->segment(2): 'dashboard';
 		$params['menu_list'] = $this->utility_model->get_option_by_type('backend_menu');
-		$params['user_list'] = $this->users_model->get_user_list();
-		$params['result_sets'] = ($this->session->flashdata('result_sets'))? $this->session->flashdata('result_sets'): NULL;
-// 		echo '<pre>';
-// 		print_r($params['user_list']);
-// 		echo '</pre>';
+		$params['mysql_result'] = ($this->session->flashdata('mysql_result'))? $this->session->flashdata('mysql_result'): NULL;
 		$this->load->view('backend/header_view', $params);
-		$this->load->view('backend/users_view', $params);
+		$params['user_list'] = $this->users_model->get_user_list();
+		$this->load->view('backend/user_list_view', $params);
 		$this->load->view('backend/footer_view', $params);
+	}
+	
+	public function add() {
+		if ($this->session->userdata('user_data') === '') {
+			redirect('backend/users/signin', 'refresh');
+			exit();
+		}
+		$params['user_data'] = $this->session->userdata('user_data');
+		$params['current_page'] = ($this->uri->segment(2))? $this->uri->segment(2): 'dashboard';
+		$params['menu_list'] = $this->utility_model->get_option_by_type('backend_menu');
+		$params['user_list'] = $this->users_model->get_user_list();
+		$this->load->view('backend/header_view', $params);
+		$this->load->view('backend/user_form_view', $params);
+		$this->load->view('backend/footer_view', $params);
+	}
+	
+	public function do_add() {
+		if ($this->session->userdata('user_data') === '') {
+			redirect('backend/users/signin', 'refresh');
+			exit();
+		}
+		$params['user_data'] = $this->session->userdata('user_data');
+		$user = array(
+			'created_by' => $params['user_data']['user_signin'],
+			'last_updated_by' => $params['user_data']['user_signin'],
+			'user_signin' => $this->input->post('in-user-signin'),
+			'user_password' => $this->input->post('in-password'),
+			'user_email' => $this->input->post('in-email')
+		);
+		$this->session->set_flashdata('mysql_result', $this->users_model->do_add($user));
+		redirect('backend/users', 'refresh');
 	}
 	
 	public function signin() {

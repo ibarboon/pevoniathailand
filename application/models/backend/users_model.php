@@ -15,6 +15,15 @@ class Users_Model extends CI_Model {
 		return $query;
 	}
 	
+	public function get_user($user) {
+		$sql = "select u.row_id user_id, u.* ";
+		$sql .= "from cms_users u ";
+		$sql .= "where u.user_signin = lower(?) ";
+		$sql .= "limit 1";
+		$query = $this->db->query($sql, $user);
+		return $query->row_array();
+	}
+	
 	public function get_user_list() {
 		$sql = 'select u.row_id user_id, u.user_signin, u.user_password, u.user_email, u.user_last_signin, user_password_changed ';
 		$sql .= 'from cms_users u ';
@@ -32,6 +41,17 @@ class Users_Model extends CI_Model {
 		$sql .= 'limit 1';
 		$query = $this->db->query($sql, array($in_user_login, $in_user_password));
 		return $query->row_array();
+	}
+	
+	public function do_add($user) {
+		$sql = "insert into cms_users (row_id, created, created_by, last_updated, last_updated_by, user_signin, user_last_signin, user_password, user_password_changed, user_email, active_flag) ";
+		$sql .= "values (null, now(), ?, now(), ?, lower(?), null, md5(md5(?)), null, ?, 'Y')";
+		try {
+			$this->db->query($sql, $user);
+		} catch (Exception $e) {
+			echo 'Caught exception: ' , $e->getMessage();
+		}
+		return $this->db->affected_rows();
 	}
 }
 

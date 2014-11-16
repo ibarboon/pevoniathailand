@@ -27,28 +27,33 @@
 					?>
 					</ul>
 				</div>
+<!-- 				<div class="widget"> -->
+<!-- 					<h4>Office Hours</h4> -->
+<!-- 					<ul class="contact-details-alt hours"> -->
+<!-- 						<li><i class="icon-time"></i>Monday - Friday <span class="hours">09.00 - 18.00</span></li> -->
+<!-- 						<li><i class="icon-ban-circle"></i>Saturday - Sunday<span class="hours">Closed</span></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
 				<div class="widget">
-					<h4>Office Hours</h4>
-					<ul class="contact-details-alt hours">
-						<li><i class="icon-time"></i>Monday - Friday <span class="hours">09.00 - 18.00</span></li>
-						<li><i class="icon-ban-circle"></i>Saturday - Sunday<span class="hours">Closed</span></li>
-					</ul>
-				</div>
-				<div class="widget">
-					<h4>How to Order</h4>
+					<h4><?php echo $how_to_order['content_header']; ?></h4>
 					<ul class="check-list">
-						<li>Call direct : 02-489-4955-7, +66 2489 4955-7</li>
-						<li>E-mail : info@pevoniathailand.com</li>
-						<li>For more information https://www.facebook.com/pevoniathailand</li>
+						<?php
+							$item_list = explode('|',$how_to_order['content_body']);
+							foreach ($item_list as $item) {
+								echo '<li>'.$item.'</li>';
+							}
+						?>
 					</ul>
 				</div>
 				<div class="widget">
-					<h4>Payment Channel</h4>
+					<h4><?php echo $payment_channel['content_header']; ?></h4>
 					<ul>
-						<li>Bank of Ayudhya Public Company Limited.</li>
-						<li>Branch : Seacon Bangkae (Saving Account)</li>
-						<li>Name of Account : Pevonia (Thailand) Co., Ltd.</li>
-						<li>Account No. 289-1-41017-1</li>
+						<?php
+							$item_list = explode('|',$payment_channel['content_body']);
+							foreach ($item_list as $item) {
+								echo '<li>'.$item.'</li>';
+							}
+						?>
 					</ul>
 				</div>
 			</aside>
@@ -57,9 +62,14 @@
 			<section class="page-content">
 				<h3 class="margin-reset">Our Location</h3>
 				<br>
-				<a href="<?php echo base_url('/assets/images/office_map.jpg'); ?>" rel="fancybox-gallery">
-					<img src="<?php echo base_url('/assets/images/office_map.jpg'); ?>"/>
-				</a>
+				<?php
+					$media = explode('|',$our_location['content_media']);
+					if($media[0] === 'image') {
+						echo '<a href="'.base_url('/assets/images/'.$media[1]).'" rel="fancybox-gallery">';
+						echo '<img alt="" src="'.base_url('/assets/images/'.$media[1]).'">';
+						echo '</a>';
+					}
+				?>
 				<div class="clearfix"></div>
 			</section>
 		</div>
