@@ -41,7 +41,7 @@
 						<?php foreach ($product_list as $product) { ?>
 						<tr>
 							<td><input type="checkbox" class="checkbox-for-delete" name="input-row-id[]" value="<?php echo $product['row_id']; ?>"></td>
-							<td><a href="<?php echo site_url('backend/products/view/'.$product['product_code']); ?>"><?php echo $product['product_code']; ?></a></td>
+							<td><?php echo $product['product_code']; ?></td>
 							<td><?php echo $product['product_name_en']; ?></td>
 							<td><?php echo $product['product_name_th']; ?></td>
 							<td><?php echo $product['created']; ?></td>
