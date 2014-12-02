@@ -19,7 +19,11 @@ class Contents_Model extends CI_Model {
 		$sql .= "from cms_contents ";
 		$sql .= "where lower(content_type) = lower(?) ";
 		$sql .= "and content_language = ? ";
-		$sql .= "order by created desc";
+		if ($in_content_type === 'pevonia-spas') {
+			$sql .= "order by content_header";
+		} else {
+			$sql .= "order by created desc";
+		}
 		$query = $this->db->query($sql, array($in_content_type, $in_content_language));
 		return $query->result_array();
 	}
@@ -46,7 +50,7 @@ class Contents_Model extends CI_Model {
 	}
 	
 	public function get_spas_list($in_content_type, $in_content_language) {
-		$sql = "select distinct content_header spa ";
+		$sql = "select distinct row_id spa_id, content_header spa ";
 		$sql .= "from cms_contents ";
 		$sql .= "where lower(content_type) = lower(?) ";
 		$sql .= "and content_language = ? ";
@@ -55,13 +59,18 @@ class Contents_Model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function get_content($in_content_alias_name, $in_content_language) {
+	public function get_content($content) {
 		$sql = "select row_id content_id, date_format(created,'%e') d, substring(date_format(created,'%M'), 1, 3) m, created_by, content_alias_name, content_header, content_body , content_media ";
 		$sql .= "from cms_contents ";
-		$sql .= "where content_alias_name = ? ";
-		$sql .= "and content_language = ? ";
+		foreach($content as $key => $value) {
+			if (strpos($sql, 'where') === FALSE) {
+				$sql .= "where $key = ? ";
+			} else {
+				$sql .= "and $key = ? ";
+			}
+		}
 		$sql .= "limit 1";
-		$query = $this->db->query($sql, array($in_content_alias_name, $in_content_language));
+		$query = $this->db->query($sql, $content);
 		return $query->row_array();
 	}
 	

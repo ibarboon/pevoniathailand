@@ -4,7 +4,14 @@
 				<div class="four columns">
 					<img id="logo-footer" src="<?php echo base_url('/assets/images/pevonia-flower-02.png'); ?>" alt="Pevonia Thailand" />
 					<p>
-						<?php echo substr($why_pevonia['content_body'], 0, 128); ?>
+						<?php
+							if (strpos($why_pevonia['content_body'], '|')) {
+								$p = explode('|', $why_pevonia['content_body']);
+								echo $p[0];
+							} else {
+								echo $why_pevonia['content_body'];
+							}
+						?>
 					</p>
 				</div>
 				<div class="four columns">

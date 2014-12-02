@@ -18,7 +18,7 @@
 					foreach ($content_list as $key => $value) {
 						$attr = ($key == 0)? 'opened': NULL;
 				?>
-					<div class="toggle-wrap">
+					<div class="toggle-wrap" id="<?php echo $value['content_id']; ?>">
 						<span class="trigger <?php echo $attr; ?>"><a href="#"><i class="toggle-icon"></i> <?php echo $value['content_header']; ?></a></span>
 						<div class="toggle-container">
 							<div class="four columns">
@@ -48,7 +48,7 @@
 					<ul class="categories">
 						<?php
 							foreach($spas_list as $key => $value) {
-								echo '<li><a href="javascript: void(0);">'.$value['spa'].'</a></li>';
+								echo '<li><a href="#'.$value['spa_id'].'">'.$value['spa'].'</a></li>';
 							}
 						?>
 					</ul>

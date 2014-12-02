@@ -11,7 +11,8 @@ class Pevonia_Spas extends CI_Controller {
 		$params['current_view'] = ($this->uri->segment(2))? $this->uri->segment(2): 'home';
 		$params['menu_list'] = $this->utility_model->get_menu_list('menu_'.$params['default_language']);
 		$params['breadcrumbs_list'] = array('You are here:', 'Home', ucwords($this->uri->segment(2)));
-		$params['why_pevonia'] = $this->contents_model->get_content('why-pevonia', $params['default_language']);
+		$content = array('content_alias_name' => 'why-pevonia', 'content_language' => $params['default_language']);
+		$params['why_pevonia'] = $this->contents_model->get_content($content);
 		$params['contact_list'] = $this->utility_model->get_option_by_type('contact_'.$params['default_language']);
 		$params['social_network_list'] = $this->utility_model->get_option_by_type('social_network');
 		

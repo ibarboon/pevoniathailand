@@ -12,7 +12,14 @@
 				<article class="icon-box">
 					<h3>Why Pevonia</h3>
 					<p>
-						<?php echo substr($why_pevonia['content_body'], 0, 128); ?>
+						<?php
+							if (strpos($why_pevonia['content_body'], '|')) {
+								$p = explode('|', $why_pevonia['content_body']);
+								echo $p[0];
+							} else {
+								echo $why_pevonia['content_body'];
+							}
+						?>
 						<a href="<?php echo site_url($default_language.'/why-pevonia'); ?>"><?php echo ($default_language === 'en')? 'read more': 'อ่านต่อ'; ?></a>
 					</p>
 				</article>
@@ -37,64 +44,46 @@
 		<div class="blank floated">
 			<section class="jcarousel recent-work-jc">
 				<ul>
+					<?php
+						foreach($product_list as $product) {
+							if (strpos($product['product_image'], '|')) {
+								$image_list = explode('|', $product['product_image']);
+								$img_src = $image_list[0];
+							} else {
+								$img_src = $product['product_image'];
+							}
+					?>
 					<li class="four columns">
-						<a href="single-project.html" class="portfolio-item">
+						<a href="<?php echo site_url($default_language.'/products/'.$product['row_id']); ?>" class="portfolio-item">
 							<figure>
-								<img src="<?php echo base_url('/assets/images/portfolio/portfolio-01.jpg'); ?>" alt=""/>
+								<img src="<?php echo base_url('/assets/images/products/'.$img_src); ?>" alt="" />
 								<figcaption class="item-description">
-									<h5>Time Is Running Out</h5>
-									<span>Photography</span>
+									<h5><?php echo $product['product_name_'.$default_language]; ?></h5>
+									<!--<span>Photography</span> -->
 								</figcaption>
 							</figure>
 						</a>
 					</li>
-					<li class="four columns">
-					<a href="single-project.html" class="portfolio-item">
-					<figure>
-					<img src="<?php echo base_url('/assets/images/portfolio/portfolio-01.jpg'); ?>" alt=""/>
-					<figcaption class="item-description">
-					<h5>Seeds of Growth</h5>
-					<span>Architecture</span>
-					</figcaption>
-					</figure>
-					</a>
-					</li>
-					<li class="four columns">
-					<a href="single-project.html" class="portfolio-item">
-					<figure>
-					<img src="<?php echo base_url('/assets/images/portfolio/portfolio-01.jpg'); ?>" alt=""/>
-					<figcaption class="item-description">
-					<h5>Beautiful Flowers</h5>
-					<span>Identity</span>
-					</figcaption>
-					</figure>
-					</a>
-					</li>
-					<li class="four columns">
-					<a href="single-project.html" class="portfolio-item">
-					<figure>
-					<img src="<?php echo base_url('/assets/images/portfolio/portfolio-01.jpg'); ?>" alt=""/>
-					<figcaption class="item-description">
-					<h5>Poppy Flower</h5>
-					<span>Identity</span>
-					</figcaption>
-					</figure>
-					</a>
-					</li>
+					<?php } ?>
 				</ul>
 			</section>
 		</div>
 	</div>
 	<div class="page-content">
 		<div class="container">
+			<?php
+				foreach($home_content as $key => $value) {
+					if (strpos($value['option_value'], '|')) {
+						$section_detail = explode('|', $value['option_value']);
+					}
+			?>
 			<div class="eight columns">
-				<h3 class="margin-reset">Pevonia Spa</h3>
-				<img alt="Pevonia Spa" src="<?php echo base_url('assets/images/'.$home_content['pevonia_spa']); ?>">
+				<h3 class="margin-reset"><?php echo $section_detail[2]; ?></h3>
+				<a href="<?php echo site_url($default_language.'/'.$section_detail[1]); ?>">
+					<img alt="Pevonia Spa" src="<?php echo base_url('assets/images/'.$section_detail[0]); ?>">
+				</a>
 			</div>
-			<div class="eight columns">
-				<h3 class="margin-reset">Professional Zone</h3>
-				<img alt="Professional Zone" src="<?php echo base_url('assets/images/'.$home_content['professional_zone']); ?>">
-			</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

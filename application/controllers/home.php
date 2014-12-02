@@ -14,10 +14,12 @@ class Home extends CI_Controller {
 		$params['social_network_list'] = $this->utility_model->get_option_by_type('social_network');
 		/* GET DATA BY VIEW*/
 		$params['slides'] = $this->utility_model->get_option_by_type('slides');
-		$params['why_pevonia'] = $this->contents_model->get_content('why-pevonia', $params['default_language']);
+		$content = array('content_alias_name' => 'why-pevonia', 'content_language' => $params['default_language']);
+		$params['why_pevonia'] = $this->contents_model->get_content($content);
 		$params['news'] = $this->contents_model->get_last_content('news', $params['default_language']);
-		$params['home_content'] = $this->utility_model->get_option_by_type('home_content' ,'customize');
-		$params['product_list'] = $this->products_model->get_product_list_by_class('HomeCare', 'N', 0, 4);
+		$params['home_content'] = $this->utility_model->get_option_by_type('home_content');
+		$product = array('product_class_id' => 1);
+		$params['product_list'] = $this->products_model->get_product_list_by_class($product, 0, 4);
 		/* LOAD VIEW */
 		$this->load->view('header_view', $params);
 		$this->load->view('home_view', $params);

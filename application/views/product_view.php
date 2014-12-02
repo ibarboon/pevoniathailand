@@ -1,7 +1,7 @@
 <div id="content">
 	<div class="container floated">
 		<div class="sixteen floated page-title">
-			<h2><?php echo $product['product_name_en']; ?></h2>
+			<h2><?php echo $product['product_name_'.$default_language]; ?></h2>
 			<nav id="breadcrumbs">
 				<ul>
 					<li>You are here:</li>
@@ -23,8 +23,8 @@
 				</div>
 				<div class="five columns">
 					<div class="product-info">
-						<h3 class="title"><?php echo $product['product_name_en']; ?></h3>
-						<p><?php echo $product['product_detail_en']; ?></p>
+						<h3 class="title"><?php echo $product['product_name_'.$default_language]; ?></h3>
+						<p><?php echo $product['product_detail_'.$default_language]; ?></p>
 						<div class="clearfix"></div>
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 						<div class="tab-content" id="tab1">
 							<p>
 								<?php
-									if (strpos($product['benefit_'.$default_language], '|')) {
+									if (strpos($product['benefit_'.$default_language], '|') !== FALSE) {
 										$benefit_list = explode('|', $product['benefit_'.$default_language]);
 										echo '<ul class="check-list">';
 										foreach ($benefit_list as $benefit) {
@@ -56,15 +56,15 @@
 						<div class="tab-content" id="tab2">
 							<p>
 								<?php
-									if (strpos($product['usage_'.$default_language], '|')) {
-										$benefit_list = explode('|', $product['benefit_'.$default_language]);
+									if (strpos($product['usage_'.$default_language], '|') !== FALSE) {
+										$usage_list = explode('|', $product['usage_'.$default_language]);
 										echo '<ul class="check-list">';
-										foreach ($benefit_list as $benefit) {
-											echo "<li>$benefit</li>";
+										foreach ($usage_list as $usage) {
+											echo "<li>$usage</li>";
 										}
 										echo '</ul>';
 									} else {
-										echo $product['benefit_'.$default_language];
+										echo $product['usage_'.$default_language];
 									}
 								?>
 							</p>
@@ -72,15 +72,15 @@
 						<div class="tab-content" id="tab3">
 							<p>
 								<?php
-									if (strpos($product['key_ingredient_'.$default_language], '|')) {
-										$benefit_list = explode('|', $product['benefit_'.$default_language]);
+									if (strpos($product['key_ingredient_'.$default_language], '|') !== FALSE) {
+										$key_ingredient_list = explode('|', $product['key_ingredient_'.$default_language]);
 										echo '<ul class="check-list">';
-										foreach ($benefit_list as $benefit) {
-											echo "<li>$benefit</li>";
+										foreach ($key_ingredient_list as $key_ingredient) {
+											echo "<li>$key_ingredient</li>";
 										}
 										echo '</ul>';
 									} else {
-										echo $product['benefit_'.$default_language];
+										echo $product['key_ingredient_'.$default_language];
 									}
 								?>
 							</p>
@@ -103,6 +103,14 @@
 							</a>
 						</li>
 						<?php endforeach; ?>
+					</ul>
+				</nav>
+				<nav class="widget">
+					<h4>Download Lists</h4>
+					<ul class="categories">
+						<?php foreach ($download_list as $download_item) { ?>
+						<li><a href="<?php echo base_url('/assets/download/'.$download_item['option_value']); ?>" target="_blank"><?php echo $download_item['option_value']; ?></a></li>
+						<?php } ?>
 					</ul>
 				</nav>
 			</aside>

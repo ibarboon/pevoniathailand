@@ -22,11 +22,19 @@
 					<div class="four-shop columns isotope-item">
 						<div class="shop-item">
 							<figure>
+								<?php
+									if (strpos($product['product_image'], '|')) {
+										$image_list = explode('|', $product['product_image']);
+										$img_src = $image_list[0];
+									} else {
+										$img_src = $product['product_image'];
+									}
+								?>
 								<a href="javascript:void(0);">
-									<img src="<?php echo base_url('/assets/images/products/'.$product['product_image']); ?>" alt="" />
+									<img src="<?php echo base_url('/assets/images/products/'.$img_src); ?>" alt="" />
 								</a>
 								<figcaption class="item-description">
-									<a href="<?php echo site_url($pre_url.'/'.$product['product_code']); ?>"><h5><?php echo $product['product_name_th']; ?></h5></a>
+									<a href="<?php echo site_url($default_language.'/products/'.$product['row_id']); ?>"><h5><?php echo $product['product_name_'.$default_language]; ?></h5></a>
 								</figcaption>
 							</figure>
 						</div>
@@ -42,7 +50,7 @@
 					<ul class="categories">
 						<?php foreach($product_type_list as $product_type): ?>
 						<li>
-							<a href="<?php echo site_url($default_language.'/'.$breadcrumbs_list['0'].'/'.$product_type['product_type_alias_name']); ?>">
+							<a href="<?php echo site_url($default_language.'/products/'.$product_type['product_type_alias_name']); ?>">
 								<?php echo $product_type['product_type_name_en']; ?>
 							</a>
 						</li>

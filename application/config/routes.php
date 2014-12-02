@@ -3,6 +3,7 @@
 $route['(en|th)/home'] = 'home';
 $route['(en|th)/(news|news/(:any))'] = 'news';
 $route['(en|th)/why-pevonia'] = 'why_pevonia';
+$route['(en|th)/products/(:any)'] = 'products';
 $route['(en|th)/(HomeCare|professional-zone)'] = 'products';
 $route['(en|th)/(HomeCare|professional-zone)/(:any)'] = 'products';
 $route['(en|th)/(pevonia-spas|pevonia-spas/(:any))'] = 'pevonia_spas';

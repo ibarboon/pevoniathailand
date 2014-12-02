@@ -12,7 +12,8 @@ class QA extends CI_Controller {
 		$params['current_view'] = ($this->uri->segment(2))? $this->uri->segment(2): 'home';
 		$params['menu_list'] = $this->utility_model->get_menu_list('menu_'.$params['default_language']);
 		$params['contact_list'] = $this->utility_model->get_option_by_type('contact_'.$params['default_language']);
-		$params['why_pevonia'] = $this->contents_model->get_content('why-pevonia', $params['default_language']);
+		$content = array('content_alias_name' => 'why-pevonia', 'content_language' => $params['default_language']);
+		$params['why_pevonia'] = $this->contents_model->get_content($content);
 		$params['social_network_list'] = $this->utility_model->get_option_by_type('social_network');
 		/* GET DATA BY VIEW*/
 		$params['breadcrumbs_list'] = array('You are here:', 'Home', ucwords($this->uri->segment(2)));
@@ -23,7 +24,8 @@ class QA extends CI_Controller {
 			$params['content_list'] = $this->contents_model->get_content_list_by_archives($this->uri->segment(4), $this->uri->segment(2), $params['default_language']);
 			$this->load->view('content_list_view', $params);
 		} elseif ($this->uri->segment(3)) {
-			$params['content'] = $this->contents_model->get_content($this->uri->segment(3), $params['default_language']);
+			$content = array('row_id' => $this->uri->segment(3), 'content_language' => $params['default_language']);
+			$params['content'] = $this->contents_model->get_content($content);
 			$this->load->view('content_view', $params);
 		} else {
 			$params['content_list'] = $this->contents_model->get_content_list_by_type($this->uri->segment(2), $params['default_language']);

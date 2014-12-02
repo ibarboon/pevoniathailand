@@ -11,7 +11,8 @@ class Why_Pevonia extends CI_Controller {
 		$params['menu_list'] = $this->utility_model->get_menu_list('menu_'.$params['default_language']);
 		$params['contact_list'] = $this->utility_model->get_option_by_type('contact_'.$params['default_language']);
 		$params['slides'] = $this->utility_model->get_option_by_type('slides');
-		$params['why_pevonia'] = $this->contents_model->get_content('why-pevonia', $params['default_language']);
+		$content = array('content_alias_name' => 'why-pevonia', 'content_language' => $params['default_language']);
+		$params['why_pevonia'] = $this->contents_model->get_content($content);
 		$params['social_network_list'] = $this->utility_model->get_option_by_type('social_network');
 		$this->load->view('header_view', $params);
 		$this->load->view('why_pevonia_view', $params);
