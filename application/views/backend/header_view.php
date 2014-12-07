@@ -11,7 +11,6 @@
 		</style>
 		<script type="text/javascript" src="<?php echo base_url('assets/scripts/jquery-1.11.0.js'); ?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('assets/scripts/bootstrap.min.js'); ?>"></script>
-		<script type="text/javascript" src="<?php echo base_url('assets/scripts/view.'.$current_page.'.js'); ?>"></script>
 		<?php if (file_exists('./assets/scripts/view.'.$current_page.'.js')) { ?>
 		<script type="text/javascript" src="<?php echo base_url('assets/scripts/view.'.$current_page.'.js'); ?>"></script>
 		<?php } ?>

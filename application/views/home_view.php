@@ -69,21 +69,27 @@
 			</section>
 		</div>
 	</div>
-	<div class="page-content">
+	<div class="page-content portfolio">
 		<div class="container">
-			<?php
-				foreach($home_content as $key => $value) {
-					if (strpos($value['option_value'], '|')) {
-						$section_detail = explode('|', $value['option_value']);
-					}
-			?>
-			<div class="eight columns">
-				<h3 class="margin-reset"><?php echo $section_detail[2]; ?></h3>
-				<a href="<?php echo site_url($default_language.'/'.$section_detail[1]); ?>">
-					<img alt="Pevonia Spa" src="<?php echo base_url('assets/images/'.$section_detail[0]); ?>">
-				</a>
+			<div id="portfolio-wrapper">
+				<?php
+					foreach($home_content as $key => $value) {
+						if (strpos($value['option_value'], '|')) {
+							$section_detail = explode('|', $value['option_value']);
+						}
+				?>
+				<div class="eight columns isotope-item">
+					<a href="<?php echo site_url($default_language.'/'.$section_detail[1]); ?>" class="portfolio-item">
+						<figure>
+							<img src="<?php echo base_url('assets/images/'.$section_detail[0]); ?>" alt=""/>
+							<figcaption class="item-description">
+								<h5><?php echo $section_detail[2]; ?></h5>
+							</figcaption>
+						</figure>
+					</a>
+				</div>
+				<?php } /* END FOR LOOP */ ?>
 			</div>
-			<?php } ?>
 		</div>
 	</div>
 </div>

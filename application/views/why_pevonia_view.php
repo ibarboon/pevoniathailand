@@ -41,7 +41,7 @@
 				<?php } ?>
 				<?php } ?>
 				<br>
-				<p><?php echo str_replace('|', '', $why_pevonia['content_body']); ?></p>
+				<p><?php echo nl2br(str_replace('|', '', $why_pevonia['content_body'])); ?></p>
 			</div>
 		</div>
 	</div>

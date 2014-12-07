@@ -5,9 +5,6 @@
 			<li><a href="<?php echo site_url('backend/dashboard');?>"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard</a></li>
 			<li class="active"><span class="glyphicon glyphicon-user"></span>&nbsp;Users</li>
 		</ol>
-		<pre>
-		<?php print_r($user); ?>
-		</pre>
 		<form role="form" class="form-horizontal" method="post" action="<?php echo site_url('backend/users/do_add'); ?>">
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="in-email">Email</label>

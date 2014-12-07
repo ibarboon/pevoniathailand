@@ -16,9 +16,6 @@ class Products extends CI_Controller {
 		$params['menu_list'] = $this->utility_model->get_option_by_type('backend_menu');
 		$params['mysql_result'] = ($this->session->flashdata('mysql_result'))? $this->session->flashdata('mysql_result'): NULL;
 		$params['product_list'] = $this->products_model->get_product_list();
-// 		echo '<pre>';
-// 		print_r($params['product_list']);
-// 		echo '</pre>';
 		$this->load->view('backend/header_view', $params);
 		$this->load->view('backend/product_list_view', $params);
 		$this->load->view('backend/footer_view', $params);
@@ -41,7 +38,6 @@ class Products extends CI_Controller {
 		$params['product_type_list']['home-care'] = $this->products_model->get_product_type_list_by_class($product_class);
 		$product_class = array('product_class_alias_name' => 'professional-zone');
 		$params['product_type_list']['professional-zone'] = $this->products_model->get_product_type_list_by_class($product_class);
-// 		$this->to_string($params);
 		/* LOAD VIEW */
 		$this->load->view('backend/header_view', $params);
 		$this->load->view('backend/product_form_view', $params);
@@ -58,15 +54,33 @@ class Products extends CI_Controller {
 		$config['upload_path'] = './assets/images/products/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size'] = '512';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '768';
+		$config['max_width'] = '640';
+		$config['max_height'] = '500';
 		$config['overwrite'] = false;
 		$config['encrypt_name'] = true;
 		
 		$this->load->library('upload', $config);
-		
-		if ($this->upload->do_upload()) {
-			$file = $this->upload->data();
+
+		foreach ($_FILES['userfile'] as $o_k => $o_v) {
+			foreach ($o_v as $i_k => $i_v) {
+				$_FILES['userfile'.$i_k][$o_k] = $i_v;
+			}
+		}
+		unset($_FILES['userfile']);
+		$result_sets = array(
+			'succeed' => 0,
+			'failed' => 0
+		);
+		foreach ($_FILES as $key => $value) {
+			if ($this->upload->do_upload($key)) {
+				$file = $this->upload->data();
+				$product_image_list[] = $file['file_name'];
+				$result_sets['succeed'] += 1;
+			} else {
+				$result_sets['failed'] += 1;
+			}
+		}
+		if ((int)$result_sets['succeed'] > 0) {
 			$product = array(
 				'created_by' => $params['user_data']['user_signin'],
 				'last_updated_by' => $params['user_data']['user_signin'],
@@ -81,7 +95,7 @@ class Products extends CI_Controller {
 				'usage_th' => $this->input->post('input-usage-th'),
 				'key_ingredient_en' => $this->input->post('input-key-ingredient-en'),
 				'key_ingredient_th' => $this->input->post('input-key-ingredient-th'),
-				'product_image' => $file['file_name'],
+				'product_image' => implode('|', $product_image_list),
 				'product_type_id' => $this->input->post('input-product-type')
 			);
 			$mysql_result = $this->products_model->do_add($product);
@@ -103,11 +117,15 @@ class Products extends CI_Controller {
 		
 		$params['mysql_result'] = ($this->session->flashdata('mysql_result'))? $this->session->flashdata('mysql_result'): NULL;
 		$params['action'] = 'view';
-		$content = array('row_id' => $this->uri->segment(4));
-		$params['content'] = $this->contents_model->get_content_by_id($content);
-				
+		$params['action_link'] = site_url('backend/products/do_edit');
+		$product_class = array('product_class_alias_name' => 'HomeCare');
+		$params['product_type_list']['home-care'] = $this->products_model->get_product_type_list_by_class($product_class);
+		$product_class = array('product_class_alias_name' => 'professional-zone');
+		$params['product_type_list']['professional-zone'] = $this->products_model->get_product_type_list_by_class($product_class);
+		$product = array('p.row_id' => $this->uri->segment(4));
+		$params['product'] = $this->products_model->get_product($product);
 		$this->load->view('backend/header_view', $params);
-		$this->load->view('backend/content_form_view', $params);
+		$this->load->view('backend/product_form_view', $params);
 		$this->load->view('backend/footer_view', $params);
 	}
 	
@@ -118,52 +136,86 @@ class Products extends CI_Controller {
 		}
 		$params['user_data'] = $this->session->userdata('user_data');
 		
-		$config['upload_path'] = './assets/images/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size'] = '1024';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '768';
-		$config['overwrite'] = false;
-		$config['encrypt_name'] = true;
-		
-		$this->load->library('upload', $config);
-		
-		if ($this->upload->do_upload()) {
-			$content_media = $this->upload->data();
-			$content = array(
-				'last_updated_by' => $params['user_data']['user_signin'],
-				'content_type' => $this->input->post('input-content-type'),
-				'content_alias_name' => str_replace(' ', '-', $this->input->post('input-content-header')),
-				'content_header' => $this->input->post('input-content-header'),
-				'content_body' => $this->input->post('input-content-body'),
-				'content_media' => 'image|'.$content_media['file_name'],
-				'content_language' => $this->input->post('input-content-language'),
-				'row_id' => $this->input->post('input-row-id')
-			);
-		} else {
-			$mysql_result = $this->upload->display_errors('', '');
-			if ($mysql_result === 'You did not select a file to upload.') {
-				$content = array(
-					'last_updated_by' => $params['user_data']['user_signin'],
-					'content_type' => $this->input->post('input-content-type'),
-					'content_alias_name' => str_replace(' ', '-', $this->input->post('input-content-header')),
-					'content_header' => $this->input->post('input-content-header'),
-					'content_body' => $this->input->post('input-content-body'),
-					'content_media' => $this->input->post('input-old-content-media'),
-					'content_language' => $this->input->post('input-content-language'),
-					'row_id' => $this->input->post('input-row-id')
-				);
-			}
-		}
-		$mysql_result = $this->contents_model->do_edit($content);
+		$product = array(
+			'last_updated_by' => $params['user_data']['user_signin'],
+			'product_code' => $this->input->post('input-product-code'),
+			'product_name_en' => $this->input->post('input-product-name-en'),
+			'product_name_th' => $this->input->post('input-product-name-th'),
+			'product_detail_en' => $this->input->post('input-product-detail-en'),
+			'product_detail_th' => $this->input->post('input-product-detail-th'),
+			'benefit_en' => $this->input->post('input-benefit-en'),
+			'benefit_th' => $this->input->post('input-benefit-th'),
+			'usage_en' => $this->input->post('input-usage-en'),
+			'usage_th' => $this->input->post('input-usage-th'),
+			'key_ingredient_en' => $this->input->post('input-key-ingredient-en'),
+			'key_ingredient_th' => $this->input->post('input-key-ingredient-th'),
+			'product_type_id' => $this->input->post('input-product-type'),
+			'row_id' => $this->input->post('input-row-id')
+		);
+		$mysql_result = $this->products_model->do_edit($product);
 		$this->session->set_flashdata('mysql_result', $mysql_result);
-		redirect('backend/contents', 'refresh');
+		redirect('backend/products	', 'refresh');
 	}
 	
 	public function do_delete() {
 		$mysql_result = $this->products_model->do_delete($this->input->post('input-row-id'));
 		$this->session->set_flashdata('mysql_result', $mysql_result);
 		redirect('backend/products', 'refresh');
+	}
+	
+	public function ajax_delete_image() {
+		if ($this->uri->segment(4) AND $this->uri->segment(5)) {
+			$this->products_model->do_delete_product_image($this->uri->segment(4), $this->uri->segment(5));
+		}
+	}
+	
+	public function manage_image() {
+		if ($this->session->userdata('user_data') === '') {
+			redirect('backend/users/signin', 'refresh');
+			exit();
+		}
+		$params['user_data'] = $this->session->userdata('user_data');
+		
+		$config['upload_path'] = './assets/images/products/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = '512';
+		$config['max_width'] = '640';
+		$config['max_height'] = '500';
+		$config['overwrite'] = false;
+		$config['encrypt_name'] = true;
+		
+		$this->load->library('upload', $config);
+
+		foreach ($_FILES['userfile'] as $o_k => $o_v) {
+			foreach ($o_v as $i_k => $i_v) {
+				$_FILES['userfile'.$i_k][$o_k] = $i_v;
+			}
+		}
+		unset($_FILES['userfile']);
+		$result_sets = array(
+			'succeed' => 0,
+			'failed' => 0
+		);
+		foreach ($_FILES as $key => $value) {
+			if ($this->upload->do_upload($key)) {
+				$file = $this->upload->data();
+				$product_image_list[] = $file['file_name'];
+				$result_sets['succeed'] += 1;
+			} else {
+				$result_sets['failed'] += 1;
+			}
+		}
+		if ((int)$result_sets['succeed'] > 0) {
+			$product = array(
+				'row_id' => $this->uri->segment(4),
+				'product_image' => $product_image_list
+			);
+			$mysql_result = $this->products_model->do_add_product_image($product);
+		} else {
+			$mysql_result = $this->upload->display_errors('', '');
+		}
+		$this->session->set_flashdata('mysql_result', $mysql_result);
+		redirect('backend/products/view/'.$this->uri->segment(4), 'refresh');
 	}
 	
 	public function to_string($array) {

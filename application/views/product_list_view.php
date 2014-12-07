@@ -34,7 +34,7 @@
 									<img src="<?php echo base_url('/assets/images/products/'.$img_src); ?>" alt="" />
 								</a>
 								<figcaption class="item-description">
-									<a href="<?php echo site_url($default_language.'/products/'.$product['row_id']); ?>"><h5><?php echo $product['product_name_'.$default_language]; ?></h5></a>
+									<a href="<?php echo site_url($default_language.'/'.$mapping_value.'/'.$product['row_id']); ?>"><h5><?php echo $product['product_name_'.$default_language]; ?></h5></a>
 								</figcaption>
 							</figure>
 						</div>
@@ -50,7 +50,7 @@
 					<ul class="categories">
 						<?php foreach($product_type_list as $product_type): ?>
 						<li>
-							<a href="<?php echo site_url($default_language.'/products/'.$product_type['product_type_alias_name']); ?>">
+							<a href="<?php echo site_url($default_language.'/'.$mapping_value.'/'.$product_type['product_type_alias_name']); ?>">
 								<?php echo $product_type['product_type_name_en']; ?>
 							</a>
 						</li>

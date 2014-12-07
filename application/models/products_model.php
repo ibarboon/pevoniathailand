@@ -6,25 +6,19 @@ class Products_Model extends CI_Model {
 		parent::__construct();
 	}
 	
-	public function get_product_list($in_class, $in_rand_flag = 'N', $in_offset = 0, $in_count = 0) {
-		$sql = "select p.row_id, p.product_code, p.product_name_en, p.product_name_th, p.product_detail_en, p.product_detail_th, p.benefit_en, p.benefit_th, p.usage_en, p.usage_th, p.key_ingredient_en, p.key_ingredient_th, p.product_image, pt.product_type_name_en, pt.product_type_name_th, pc.product_class_name_en, pc.product_class_name_th ";
-		$sql .= "from cms_products p, cms_product_type pt, cms_product_class pc ";
-		$sql .= "where p.product_type_id = pt.row_id ";
-		$sql .= "and pt.product_class_id = pc.row_id ";
-		$sql .= "and pc.product_class_alias_name = ? ";
-		if ($in_rand_flag === 'Y') {
-			$sql .= "order by rand() ";
-		} else {
-			$sql .= "order by p.product_code asc ";
-		}
-		$sql .= "limit ?, ?;";
-		$query = $this->db->query($sql, array($in_class,$in_offset,$in_count));
+	public function get_product_list() {
+		$sql = "select * ";
+		$sql .= "from cms_products ";
+		$sql .= "order by product_name_en";
+		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
 
 	public function get_product($product) {
-		$sql = "select p.row_id, p.product_code, p.product_name_en, p.product_name_th, p.product_detail_en, p.product_detail_th, p.benefit_en, p.benefit_th, p.usage_en, p.usage_th, p.key_ingredient_en, p.key_ingredient_th, p.product_image, p.product_type_id ";
-		$sql .= "from cms_products p ";
+		$sql = "select p.*, pt.product_type_name_en, pc.product_class_name_en ";
+		$sql .= "from cms_products p, cms_product_type pt, cms_product_class pc ";
+		$sql .= "where p.product_type_id = pt.row_id ";
+		$sql .= "and pt.product_class_id = pc.row_id ";
 		foreach($product as $key => $value) {
 			if (strpos($sql, 'where') === FALSE) {
 				$sql .= "where $key = ? ";
@@ -152,6 +146,28 @@ class Products_Model extends CI_Model {
 		}
 		return $this->db->affected_rows();
 	}
+	
+	public function do_edit($product) {
+		$sql = "update cms_products ";
+		foreach($product as $key => $value) {
+			if ($key !== 'row_id') {
+				if (strpos($sql, 'set') === FALSE) {
+					$sql .= "set $key = ? ";
+				} else {
+					$sql .= ", $key = ? ";
+				}
+			} else {
+				$sql .= "where $key = ? ";
+			}
+		}
+		try {
+			$this->db->query($sql, $product);
+		} catch (Exception $e) {
+			echo 'Caught exception: ' , $e->getMessage();
+		}
+		return $this->db->affected_rows();
+	}
+	
 	public function do_delete($product_list) {
 		$affected_rows = 0;
 		foreach ($product_list as $product) {
@@ -165,6 +181,35 @@ class Products_Model extends CI_Model {
 			$affected_rows += $this->db->affected_rows();
 		}
 		return $affected_rows;
+	}
+	
+	public function do_add_product_image($product) {
+		$sql = "select * ";
+		$sql .= "from cms_products ";
+		$sql .= "where row_id = ?";
+		$query = $this->db->query($sql, $product['row_id']);
+		$p = $query->row_array();
+		$product_image_list = explode('|', $p['product_image']);
+		$new_product_image_list = array_merge($product_image_list, $product['product_image']);
+		$sql = "update cms_products ";
+		$sql .= "set last_updated = now(), product_image = ? ";
+		$sql .= "where row_id = ?";
+		$this->db->query($sql, array(implode('|', $new_product_image_list), $product['row_id']));
+		return $this->db->affected_rows();
+	}
+	
+	public function do_delete_product_image($product_row_id, $product_image) {
+		$sql = "select * ";
+		$sql .= "from cms_products ";
+		$sql .= "where row_id = ?";
+		$query = $this->db->query($sql, $product_row_id);
+		$product = $query->row_array();
+		$product_image_list = explode('|', $product['product_image']);
+		unset($product_image_list[array_search($product_image, $product_image_list)]);
+		$sql = "update cms_products ";
+		$sql .= "set last_updated = now(), product_image = ? ";
+		$sql .= "where row_id = ?";
+		$this->db->query($sql, array(implode('|', $product_image_list), $product_row_id));
 	}
 }
 

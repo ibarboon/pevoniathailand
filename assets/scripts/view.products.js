@@ -39,4 +39,18 @@ $(function(){
 			}
 		}
 	});
+	
+	$('.btn-delete-product-image').click(function(){
+		var vUrl = $(this).attr('href');
+		alert(vUrl);
+		$('tr').has(this).hide();
+		$.ajax({
+			type: "POST",
+			url: vUrl,
+			success: function(res){
+				//
+			}
+		});
+		return false;
+	});
 });

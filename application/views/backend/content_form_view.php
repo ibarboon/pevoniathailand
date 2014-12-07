@@ -28,14 +28,23 @@
 				<label class="col-sm-3 control-label" for="input-content-type">Content Type : </label>
 				<div class="col-sm-4">
 					<select class="form-control" name="input-content-type" id="input-content-type">
-						<option value="">Select Content Type</option>
 						<?php
-							$content_type_list = array('activities', 'news', 'pevonia-spas', 'q-and-a');
-							foreach ($content_type_list as $content_type) {
+							if (isset($content['content_type']) AND 
+							($content['content_type'] === 'customer-service' OR $content['content_type'] === 'why-pevonia')) {
 						?>
-						<option value="<?php echo $content_type; ?>" <?php echo (isset($content['content_type']) AND $content_type == $content['content_type'])? 'selected' : NULL;?>>
-							<?php echo $content_type; ?>
-						</option>
+							<option value="<?php echo $content['content_type']; ?>">
+								<?php echo $content['content_type']; ?>
+							</option>
+						<?php } else { ?>
+							<option value="">Select Content Type</option>
+							<?php
+								$content_type_list = array('activities', 'news', 'pevonia-spas', 'q-and-a');
+								foreach ($content_type_list as $content_type) {
+							?>
+							<option value="<?php echo $content_type; ?>" <?php echo (isset($content['content_type']) AND $content_type == $content['content_type'])? 'selected' : NULL;?>>
+								<?php echo $content_type; ?>
+							</option>
+						<?php } ?>
 						<?php } ?>
 					</select>
 				</div>

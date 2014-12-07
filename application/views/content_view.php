@@ -1,7 +1,7 @@
 <div id="content">
 	<div class="container floated">
 		<div class="sixteen floated page-title">
-			<h2><?php echo $breadcrumbs_list[2]; ?></h2>
+			<h2><?php echo ($breadcrumbs_list[2] === 'Q-and-a') ? 'Q & A' : $breadcrumbs_list[2]; ?></h2>
 			<nav id="breadcrumbs">
 				<ul>
 					<?php foreach($breadcrumbs_list as $breadcrumbs):?>
@@ -37,7 +37,7 @@
 						<!--span><i class="halflings tag"></i><a href="#">Boating</a>, <a href="#">Recreation</a></span>
 						<span><i class="halflings comments"></i>With <a href="#">12 Comments</a></span-->
 					</header>
-					<p><?php echo $content['content_body']; ?></p>
+					<p style="word-wrap: break-word;"><?php echo nl2br($content['content_body']); ?></p>
 				</section>
 			</article>
 			<div class="line"></div>

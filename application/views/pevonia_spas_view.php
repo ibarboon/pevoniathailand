@@ -32,7 +32,7 @@
 								?>
 							</div>
 							<div class="six columns">
-								<p><?php echo $value['content_body']; ?></p>
+								<p><?php echo nl2br($value['content_body']); ?></p>
 							</div>
 							<div class="clearfix"></div>
 						</div>

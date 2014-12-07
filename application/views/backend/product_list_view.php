@@ -42,7 +42,7 @@
 						<tr>
 							<td><input type="checkbox" class="checkbox-for-delete" name="input-row-id[]" value="<?php echo $product['row_id']; ?>"></td>
 							<td><?php echo $product['product_code']; ?></td>
-							<td><?php echo $product['product_name_en']; ?></td>
+							<td><a href="<?php echo site_url('backend/products/view/'.$product['row_id']); ?>"><?php echo $product['product_name_en']; ?></a></td>
 							<td><?php echo $product['product_name_th']; ?></td>
 							<td><?php echo $product['created']; ?></td>
 							<td><?php echo $product['created_by']; ?></td>

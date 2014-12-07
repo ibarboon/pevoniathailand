@@ -1,7 +1,7 @@
 <div id="content">
 	<div class="container floated">
 		<div class="sixteen floated page-title">
-			<h2><?php echo $breadcrumbs_list[2]; ?></h2>
+			<h2><?php echo ($breadcrumbs_list[2] === 'Q-and-a') ? 'Q & A' : $breadcrumbs_list[2]; ?></h2>
 			<nav id="breadcrumbs">
 				<ul>
 					<?php foreach($breadcrumbs_list as $breadcrumbs):?>
