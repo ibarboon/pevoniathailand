@@ -90,7 +90,6 @@ class Products_Model extends CI_Model {
 				$sql .= "and $key = ? ";
 			}
 		}
-// 		$sql .= "and ";
 		$sql .= "order by product_type_alias_name;";
 		$query = $this->db->query($sql, $product_type);
 		return $query->result_array();

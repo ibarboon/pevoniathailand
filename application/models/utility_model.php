@@ -60,6 +60,19 @@ class Utility_Model extends CI_Model {
 		$query = $this->db->query($sql, array('%'.$in_keyword.'%', $in_language));
 		return $query->result_array();
 	}
+	public function get_option_list($option) {
+		$sql = "select * ";
+		$sql .= "from cms_options ";
+		foreach($option as $key => $value) {
+			if (strpos($sql, 'where') === FALSE) {
+				$sql .= "where $key = ? ";
+			} else {
+				$sql .= "and $key = ? ";
+			}
+		}
+		$query = $this->db->query($sql, $option);
+		return $query->result_array();
+	}
 }
 
 /* End of file utility_model.php */
