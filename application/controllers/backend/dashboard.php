@@ -14,28 +14,22 @@ class Dashboard extends CI_Controller {
 		$params['user_data'] = $this->session->userdata('user_data');
 		$params['current_page'] = ($this->uri->segment(2))? $this->uri->segment(2): 'dashboard';
 		$params['menu_list'] = $this->utility_model->get_option_by_type('backend_menu');
+		$this->db->where('option_type', 'slides');
+		$this->db->from('cms_options');
+		$params['slides'] = $this->db->count_all_results();
+		$this->db->from('cms_contents');
+		$params['contents'] = $this->db->count_all_results();
+		$this->db->from('cms_products');
+		$params['products'] = $this->db->count_all_results();
+		$this->db->where('active_flag', 'Y');
+		$this->db->from('cms_users');
+		$params['users'] = $this->db->count_all_results();
+// 		echo '<pre>';
+// 		print_r($params);
+// 		echo '</pre>';
 		$this->load->view('backend/header_view', $params);
 		$this->load->view('backend/dashboard_view', $params);
 		$this->load->view('backend/footer_view', $params);
-	}
-	
-	public function why_pevonia() {
-		$arg['default_language'] = $this->utility_model->get_default_language($this->uri->segment(1));
-		$arg['current_view'] = ($this->uri->segment(2))? $this->uri->segment(2): 'home';
-		$arg['menu_list'] = $this->utility_model->get_menu_list('menu_'.$arg['default_language']);
-		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
-		$this->load->view('header_view', $arg);
-		$this->load->view('why_pevonia_view');
-		$this->load->view('footer_view', $arg);
-	}
-	
-	public function _http_404() {
-		$arg['current_view'] = ($this->uri->segment(1))? $this->uri->segment(1): 'home';
-		$arg['menu_list'] = $this->utility_model->get_menu_list();
-		$arg['contact_list'] = $this->utility_model->get_option_by_type('contact_en', 'nomal');
-		$this->load->view('header_view', $arg);
-		$this->load->view('http_404_view');
-		$this->load->view('footer_view', $arg);
 	}
 }
 

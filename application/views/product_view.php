@@ -55,7 +55,7 @@
 											}
 											echo '</ul>';
 										} else {
-											echo $product['benefit_'.$default_language];
+											echo nl2br($product['benefit_'.$default_language]);
 										}
 									?>
 								</p>
@@ -71,7 +71,7 @@
 											}
 											echo '</ul>';
 										} else {
-											echo $product['usage_'.$default_language];
+											echo nl2br($product['usage_'.$default_language]);
 										}
 									?>
 								</p>
@@ -87,7 +87,7 @@
 											}
 											echo '</ul>';
 										} else {
-											echo $product['key_ingredient_'.$default_language];
+											echo nl2br($product['key_ingredient_'.$default_language]);
 										}
 									?>
 								</p>

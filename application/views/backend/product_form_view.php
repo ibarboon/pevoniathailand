@@ -31,8 +31,11 @@
 				<div class="col-sm-6">
 					<?php foreach ($product_type_list as $key => $value) { /* BEGIN LOOP { Select }  */ ?>
 					<select class="form-control" name="input-product-type" id="<?php echo $key; ?>">
-						<?php foreach ($value as $product_type) { /* BEGIN LOOP { Option }  */ ?>
-						<option value="<?php echo $product_type['product_type_id']; ?>"><?php echo $product_type['product_type_name_en']; ?></option>
+						<?php
+							foreach ($value as $product_type) { /* BEGIN LOOP { Option }  */
+								$attr = ($product_type['product_type_name_en'] == $product['product_type_name_en'])? 'selected="selected"': NULL;
+						?>
+						<option value="<?php echo $product_type['product_type_id']; ?>" <?php echo $attr?>><?php echo $product_type['product_type_name_en']; ?></option>
 						<?php } /* END LOOP { Option } */ ?>
 					</select>
 					<?php } /* END LOOP { Select } */ ?>
