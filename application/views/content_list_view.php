@@ -33,11 +33,11 @@
 				</section>
 				<section class="post-content">
 					<header class="meta">
-						<h2><a href="<?php echo site_url($default_language.'/'.strtolower($breadcrumbs_list[2]).'/'.$value['content_id']); ?>"><?php echo $value['content_header']; ?></a></h2>
+						<h2><a href="<?php echo site_url($default_language.'/'.strtolower($breadcrumbs_list[2]).'/'.$value['content_alias_name']); ?>"><?php echo $value['content_header']; ?></a></h2>
 						<span><i class="halflings user"></i>By <a href="javascript:void(0);"><?php echo $value['created_by']; ?></a></span>
 					</header>
 					<p><?php echo substr($value['content_body'],0,255); ?></p>
-					<a class="button color" href="<?php echo site_url($default_language.'/'.strtolower($breadcrumbs_list[2]).'/'.$value['content_id']); ?>">Read More</a>
+					<a class="button color" href="<?php echo site_url($default_language.'/'.strtolower($breadcrumbs_list[2]).'/'.$value['content_alias_name']); ?>">Read More</a>
 				</section>
 			</article>
 			<div class="line"></div>

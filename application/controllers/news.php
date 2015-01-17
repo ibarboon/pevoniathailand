@@ -24,9 +24,14 @@ class News extends CI_Controller {
 			$params['content_list'] = $this->contents_model->get_content_list_by_archives($this->uri->segment(4), $this->uri->segment(2), $params['default_language']);
 			$this->load->view('content_list_view', $params);
 		} elseif ($this->uri->segment(3)) {
-			$content = array('row_id' => $this->uri->segment(3), 'content_language' => $params['default_language']);
+			$params['sl'] = 'news/'.$this->uri->segment(3);
+			$content = array('content_alias_name' => $this->uri->segment(3), 'content_language' => $params['default_language']);
 			$params['content'] = $this->contents_model->get_content($content);
-			$this->load->view('content_view', $params);
+			if (count($params['content']) === 0) {
+				$this->load->view('http_404_view');
+			} else {
+				$this->load->view('content_view', $params);
+			}
 		} else {
 			$params['content_list'] = $this->contents_model->get_content_list_by_type($this->uri->segment(2), $params['default_language']);
 			$this->load->view('content_list_view', $params);

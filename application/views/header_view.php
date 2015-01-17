@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title>Pevonia Thailand</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="icon" href="<?php echo base_url('/assets/favicon.ico'); ?>" type="image/x-icon">
 		<link rel="stylesheet" href="<?php echo base_url('/assets/css/style.css'); ?>">
 		<link rel="stylesheet" href="<?php echo base_url('/assets/css/font-awesome.min.css'); ?>">
 		<link rel="stylesheet" href="<?php echo base_url('/assets/css/colors/celadon.css'); ?>" id="colors">

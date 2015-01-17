@@ -51,7 +51,7 @@ class Utility_Model extends CI_Model {
 	}
 	
 	public function get_search_results($in_keyword, $in_language) {
-		$sql = "select c.row_id, c.content_header, c.content_body, c.content_type ";
+		$sql = "select c.content_alias_name as row_id, c.content_header, c.content_body, c.content_type ";
 		$sql .= "from cms_contents c ";
 		$sql .= "where c.content_type in ('activities', 'news', 'pevonia-spas', 'q-and-a') ";
 		$sql .= "and c.content_body like ? ";
@@ -60,7 +60,12 @@ class Utility_Model extends CI_Model {
 		$sql .= "select p.row_id, p.product_name_en content_header, p.product_detail_en content_body, if(pt.product_class_id = 1, 'products', 'treatment') content_type ";
 		$sql .= "from cms_products p, cms_product_type pt ";
 		$sql .= "where p.product_type_id = pt.row_id ";
-		$sql .= "and (p.product_detail_en like ? or p.product_detail_th like ?) ";
+		$sql .= "and p.product_detail_en like ? ";
+		$sql .= "union ";
+		$sql .= "select p.row_id, p.product_name_th content_header, p.product_detail_th content_body, if(pt.product_class_id = 1, 'products', 'treatment') content_type ";
+		$sql .= "from cms_products p, cms_product_type pt ";
+		$sql .= "where p.product_type_id = pt.row_id ";
+		$sql .= "and p.product_detail_th like ? ";
 		$query = $this->db->query($sql, array('%'.$in_keyword.'%', $in_language, '%'.$in_keyword.'%', '%'.$in_keyword.'%'));
 		return $query->result_array();
 	}

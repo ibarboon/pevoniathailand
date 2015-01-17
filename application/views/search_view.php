@@ -16,7 +16,7 @@
 						$action_link .= ($search_item['content_type'] === 'pevonia-spas')? NULL: $search_item['row_id'];
 				?>
 				<h3><a href="<?php echo site_url($action_link);?>"><?php echo $search_item['content_header']; ?></a></h3>
-				<p><?php echo str_replace($keyword, '<span class="highlight color">'.$keyword.'</span>',$search_item['content_body']); ?></p>
+				<p style="word-wrap: break-word;"><?php echo str_replace($keyword, '<span class="highlight color">'.$keyword.'</span>',$search_item['content_body']); ?></p>
 				<div style="margin-top: 20px; margin-bottom: 20px;" class="line"></div>
 				<?php } ?>
 			</div>

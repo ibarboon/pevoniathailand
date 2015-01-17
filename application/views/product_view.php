@@ -5,14 +5,14 @@
 			<nav id="breadcrumbs">
 				<ul>
 					<li>You are here:</li>
-					<li><a href="<?php echo site_url('home'); ?>">Home</a></li>
+					<li><a href="<?php echo site_url($default_language.'/home'); ?>">Home</a></li>
 					<li><?php echo $current_view; ?></li>
 				</ul>
 			</nav>
 		</div>
 	</div>
 	<div class="container floated">
-		<div class="eleven floated">
+		<div class="eleven floated" style="padding-bottom: 50px;">
 			<div class="shop-page page-content">
 				<div class="container">
 					<div class="six columns">
@@ -61,7 +61,7 @@
 								</p>
 							</div>
 							<div class="tab-content" id="tab2">
-								<p>
+								<p style="word-wrap: break-word;">
 									<?php
 										if (strpos($product['usage_'.$default_language], '|') !== FALSE) {
 											$usage_list = explode('|', $product['usage_'.$default_language]);

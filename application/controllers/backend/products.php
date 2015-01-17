@@ -96,7 +96,7 @@ class Products extends CI_Controller {
 				'key_ingredient_en' => $this->input->post('input-key-ingredient-en'),
 				'key_ingredient_th' => $this->input->post('input-key-ingredient-th'),
 				'product_image' => implode('|', $product_image_list),
-				'product_type_id' => $this->input->post('input-product-type')
+				'product_type_id' => ($this->input->post('input-product-type-home-care') != 0)? $this->input->post('input-product-type-home-care'): $this->input->post('input-product-type-professional-zone')
 			);
 			$mysql_result = $this->products_model->do_add($product);
 		} else {
@@ -149,7 +149,7 @@ class Products extends CI_Controller {
 			'usage_th' => $this->input->post('input-usage-th'),
 			'key_ingredient_en' => $this->input->post('input-key-ingredient-en'),
 			'key_ingredient_th' => $this->input->post('input-key-ingredient-th'),
-			'product_type_id' => $this->input->post('input-product-type'),
+			'product_type_id' => ($this->input->post('input-product-type-home-care') != 0)? $this->input->post('input-product-type-home-care'): $this->input->post('input-product-type-professional-zone'),
 			'row_id' => $this->input->post('input-row-id')
 		);
 		$mysql_result = $this->products_model->do_edit($product);

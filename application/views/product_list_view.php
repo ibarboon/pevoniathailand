@@ -5,7 +5,7 @@
 			<nav id="breadcrumbs">
 				<ul>
 					<li>You are here:</li>
-					<li><a href="<?php echo site_url('home'); ?>">Home</a></li>
+					<li><a href="<?php echo site_url($default_language.'/home'); ?>">Home</a></li>
 					<li><?php echo $product_class['product_class_name_en']; ?></li>
 				</ul>
 			</nav>
@@ -30,7 +30,7 @@
 										$img_src = $product['product_image'];
 									}
 								?>
-								<a href="javascript:void(0);">
+								<a href="<?php echo site_url($default_language.'/'.$mapping_value.'/'.$product['row_id']); ?>">
 									<img src="<?php echo base_url('/assets/images/products/'.$img_src); ?>" alt="" />
 								</a>
 								<figcaption class="item-description">

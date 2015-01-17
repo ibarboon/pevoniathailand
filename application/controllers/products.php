@@ -80,6 +80,7 @@ class Products extends CI_Controller {
 			$product_class = array('row_id' => $params['product_type_list'][0]['product_class_id']);
 			$params['product_class'] = $this->products_model->get_product_class($product_class);
 			$params['current_view'] = $params['mapping_value'].'/'.$params['product_class']['product_class_alias_name'];
+			$params['sl'] = 'products/'.$this->uri->segment(3);
 			$params['download_list'] = $this->utility_model->get_download_list($params['product_class']['product_class_alias_name']);
 			$params['breadcrumbs_list'] = array($params['product_class']['product_class_alias_name']);
 			$params['product_image_list'] = explode('|', $params['product']['product_image']);

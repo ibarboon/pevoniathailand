@@ -55,9 +55,12 @@
 				</div>
 				<div class="eight columns">
 					<nav id="sub-menu">
+						<?php
+							$a_href = (isset($sl))? $sl: $current_view;
+						?>
 						<ul>
-							<li><a href="<?php echo site_url('en/'.$current_view); ?>">EN</a></li>
-							<li><a href="<?php echo site_url('th/'.$current_view); ?>">TH</a></li>
+							<li><a href="<?php echo site_url('en/'.$a_href); ?>">EN</a></li>
+							<li><a href="<?php echo site_url('th/'.$a_href); ?>">TH</a></li>
 						</ul>
 					</nav>
 				</div>

@@ -9,13 +9,14 @@ $(function(){
 	
 	/* PRODUCT_FORM_VIEW.PHP ******** */
 	var productClassSeleted = $('[name=input-product-class]:checked').val();
-	$('[name=input-product-type]').hide();
+	$('[name=input-product-type-home-care], [name=input-product-type-professional-zone]').hide();
 	$('#' + productClassSeleted).show();
 	$('#label-product-type').attr('for', productClassSeleted);
 	
-	$('[name=input-product-class]').on('click', function(){
+	$('[name=input-product-class]').on('change', function(){
 		productClassSeleted = $('[name=input-product-class]:checked').val();
-		$('[name=input-product-type]').hide();
+		$("option:selected").removeAttr("selected");
+		$('[name=input-product-type-home-care], [name=input-product-type-professional-zone]').hide();
 		$('#label-product-type').attr('for', productClassSeleted);
 		$('#' + productClassSeleted).show();
 	});
