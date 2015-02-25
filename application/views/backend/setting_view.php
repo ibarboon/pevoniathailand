@@ -146,7 +146,7 @@
 								</li>
 							<?php } ?>
 							</ul>
-							<input type="hidden" name="option_key" value="<?php echo $hc_download['option_key']; ?>">
+							<input type="hidden" name="option_key" value="HomeCare">
 							<input type="file" multiple="multiple" name="userfile[]">
 						</div>
 					</div>
@@ -172,7 +172,7 @@
 								</li>
 							<?php } ?>
 							</ul>
-							<input type="hidden" name="option_key" value="<?php echo $pz_download['option_key']; ?>">
+							<input type="hidden" name="option_key" value="professional-zone">
 							<input type="file" multiple="multiple" name="userfile[]">
 						</div>
 					</div>

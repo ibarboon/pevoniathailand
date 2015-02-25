@@ -4,9 +4,15 @@
 			<h2><?php echo ($breadcrumbs_list[2] === 'Q-and-a') ? 'Q & A' : $breadcrumbs_list[2]; ?></h2>
 			<nav id="breadcrumbs">
 				<ul>
-					<?php foreach($breadcrumbs_list as $breadcrumbs):?>
-					<li><?php echo $breadcrumbs; ?></li>
-					<?php endforeach; ?>
+					<?php
+						foreach($breadcrumbs_list as $breadcrumbs):
+							if ($breadcrumbs === 'Home') {
+								echo '<li><a href="'.site_url($default_language.'/home').'">Home</a></li>';
+							} else {
+								echo "<li>$breadcrumbs</li>";
+							}
+						endforeach;
+					?>
 				</ul>
 			</nav>
 		</div>
